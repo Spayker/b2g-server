@@ -4,10 +4,13 @@ logging:
 
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
+    registerWithEureka: false
+    fetchRegistry: false
+    registry-fetch-interval-seconds: 5
     serviceUrl:
-      defaultZone: http://registry:8761/eureka/
+      defaultZone: http://registry:8761/eureka
 
 security:
   oauth2:

@@ -9,10 +9,9 @@ spring:
       username: user
 
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
     registerWithEureka: false
     fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+    registry-fetch-interval-seconds: 5
+  server:
+    wait-time-in-ms-when-sync-empty: 0
