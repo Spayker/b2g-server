@@ -32,3 +32,4 @@ auth-service/target
 config/target
 gateway-point/target
 registry/target
+monitoring/target
