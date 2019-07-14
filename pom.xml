@@ -33,6 +33,7 @@
         <module>auth-service</module>
         <module>registry</module>
         <module>monitoring</module>
+        <module>turbine-stream-service</module>
     </modules>
 
 
