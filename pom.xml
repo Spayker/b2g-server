@@ -31,7 +31,8 @@
         <module>config</module>
         <module>gateway-point</module>
         <module>auth-service</module>
-        <module>registry</module>
+        <module>eureka</module>
+        <module>account-service</module>
         <module>monitoring</module>
         <module>turbine-stream-service</module>
     </modules>

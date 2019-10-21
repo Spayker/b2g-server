@@ -4,7 +4,7 @@ services:
   config:
       environment:
         CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
-      image: sqshq/mservicet-config
+      image: mservicet-config
       restart: always
       logging:
         options:
@@ -14,7 +14,7 @@ services:
   gateway-point:
       environment:
         CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
-      image: sqshq/mservicet-gateway
+      image: mservicet-gateway
       restart: always
       depends_on:
         config:
@@ -30,7 +30,7 @@ services:
     environment:
       CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
-    image: sqshq/mservicet-auth-service
+    image: mservicet-auth-service
     restart: always
     depends_on:
       config:
@@ -43,17 +43,17 @@ services:
   auth-mongodb:
     environment:
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
-    image: sqshq/mservicet-mongodb
+    image: mservicet-mongodb
     restart: always
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  registry:
+  eureka:
       environment:
         CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-      image: sqshq/mservicet-registry
+      image: mservicet-eureka
       restart: always
       depends_on:
         config:
@@ -68,7 +68,7 @@ services:
   monitoring:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    image: sqshq/mservicet-monitoring
+    image: mservicet-monitoring
     restart: always
     depends_on:
       config:
@@ -83,7 +83,7 @@ services:
   turbine-stream-service:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    image: sqshq/mservicet-turbine-stream-service
+    image: mservicet-turbine-stream-service
     restart: always
     depends_on:
       config:

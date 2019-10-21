@@ -19,12 +19,11 @@ services:
     ports:
       - 25000:27017
 
-  registry:
-    build: registry
+  eureka:
+    build: eureka
 
   monitoring:
     build: monitoring
 
   turbine-stream-service:
     build: turbine-stream-service
-

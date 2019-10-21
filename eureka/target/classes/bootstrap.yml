@@ -1,6 +1,6 @@
 spring:
   application:
-    name: registry
+    name: eureka
   cloud:
     config:
       uri: http://config:8888
@@ -12,6 +12,3 @@ eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
-    registry-fetch-interval-seconds: 5
-  server:
-    wait-time-in-ms-when-sync-empty: 0
