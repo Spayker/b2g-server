@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+account-service,com.spayker.account.service,AccountServiceImpl,0,99,0,0,0,19,0,4,0,4
+account-service,com.spayker.account.domain,User,0,17,0,0,0,7,0,5,0,5
+account-service,com.spayker.account.domain,Account,0,17,0,0,0,7,0,5,0,5
+account-service,com.spayker.account.service.security,CustomUserInfoTokenServices,230,54,14,0,41,8,16,2,9,2
+account-service,com.spayker.account,AccountApplication,5,52,0,0,2,9,1,6,1,6
+account-service,com.spayker.account.controller,AccountController,0,26,0,0,0,6,0,5,0,5
+account-service,com.spayker.account.controller,ErrorHandler,6,8,0,0,2,2,1,1,1,1

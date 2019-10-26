@@ -80,15 +80,6 @@ public class AccountControllerTest {
 	}
 
 	@Test
-	public void shouldFailOnValidationTryingToSaveCurrentAccount() throws Exception {
-		final Account account = new Account();
-		account.setName("test");
-		String json = mapper.writeValueAsString(account);
-		mockMvc.perform(put("/current").principal(new UserPrincipal(account.getName())).contentType(MediaType.APPLICATION_JSON).content(json))
-				.andExpect(status().isBadRequest());
-	}
-
-	@Test
 	public void shouldRegisterNewAccount() throws Exception {
 		final User user = new User();
 		user.setUsername("test");
