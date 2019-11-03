@@ -1,6 +1,6 @@
 spring:
   application:
-    name: auth-service
+    name: registry
   cloud:
     config:
       uri: http://config:8888
@@ -12,3 +12,8 @@ spring:
         max-attempts: 10
   profiles:
     active: native
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false

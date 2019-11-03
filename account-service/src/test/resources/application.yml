@@ -1,5 +1,5 @@
 spring:
   data:
     mongodb:
-      database: mservicet
+      database: meservicet
       port: 0

@@ -1,10 +1,14 @@
 package com.spayker.account.domain;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "accounts")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,6 +18,9 @@ public class Account {
 	private String name;
 
 	private Date lastSeen;
+
+	@Length(min = 0, max = 20_000)
+	private String note;
 
 	public String getName() {
 		return name;
@@ -31,4 +38,11 @@ public class Account {
 		this.lastSeen = lastSeen;
 	}
 
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
 }

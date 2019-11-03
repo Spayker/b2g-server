@@ -28,8 +28,9 @@ auth-service/*.iml
 config/*.iml
 gateway-point/*.iml
 registry/*.iml
+account-service/*.iml
 auth-service/target
 config/target
 gateway-point/target
 registry/target
-monitoring/target
+account-service/target

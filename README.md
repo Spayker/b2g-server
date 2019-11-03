@@ -11,7 +11,7 @@ on local data based. It will have two modes which define scenarious as follows:
 
 ### Stack of technologies
 Following technologies will be used:
-1) Java 11
+1) Java 8
 2) Spring Boot
 3) Spring Data
 4) Spring REST

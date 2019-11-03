@@ -7,8 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import static java.util.Optional.ofNullable;
-
 @Service
 public class MongoUserDetailsService implements UserDetailsService {
 
@@ -17,7 +15,7 @@ public class MongoUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return ofNullable(repository.findOne(username))
-				.orElseThrow(() -> new UsernameNotFoundException(username));
+
+		return repository.findById(username).orElseThrow(()->new UsernameNotFoundException(username));
 	}
 }

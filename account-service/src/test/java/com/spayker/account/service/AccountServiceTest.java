@@ -67,14 +67,16 @@ public class AccountServiceTest {
 
 		final Account update = new Account();
 		update.setName("test");
+		update.setNote("test note");
 
 		final Account account = new Account();
 
 		when(accountService.findByName("test")).thenReturn(account);
 		accountService.saveChanges("test", update);
 
+		assertEquals(update.getNote(), account.getNote());
 		assertNotNull(account.getLastSeen());
-
+		
 		verify(repository, times(1)).save(account);
 	}
 

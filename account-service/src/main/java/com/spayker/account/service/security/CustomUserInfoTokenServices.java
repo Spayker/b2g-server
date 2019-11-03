@@ -122,16 +122,20 @@ public class CustomUserInfoTokenServices implements ResourceServerTokenServices 
 				resource.setClientId(clientId);
 				restTemplate = new OAuth2RestTemplate(resource);
 			}
-			OAuth2AccessToken existingToken = restTemplate.getOAuth2ClientContext().getAccessToken();
+			OAuth2AccessToken existingToken = restTemplate.getOAuth2ClientContext()
+					.getAccessToken();
 			if (existingToken == null || !accessToken.equals(existingToken.getValue())) {
-				DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(accessToken);
+				DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(
+						accessToken);
 				token.setTokenType(tokenType);
 				restTemplate.getOAuth2ClientContext().setAccessToken(token);
 			}
 			return restTemplate.getForEntity(path, Map.class).getBody();
 		} catch (Exception ex) {
-			logger.info("Could not fetch user details: " + ex.getClass() + ", " + ex.getMessage());
-			return Collections.<String, Object>singletonMap("error", "Could not fetch user details");
+			logger.info("Could not fetch user details: " + ex.getClass() + ", "
+					+ ex.getMessage());
+			return Collections.<String, Object>singletonMap("error",
+					"Could not fetch user details");
 		}
 	}
 }

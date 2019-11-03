@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
@@ -63,6 +62,7 @@ public class AccountServiceImpl implements AccountService {
 		Account account = repository.findByName(name);
 		Assert.notNull(account, "can't find account with name " + name);
 
+		account.setNote(update.getNote());
 		account.setLastSeen(new Date());
 		repository.save(account);
 

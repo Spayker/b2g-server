@@ -2,34 +2,50 @@ version: '2.1'
 services:
 
   config:
-      environment:
-        CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
-      image: mservicet-config
-      restart: always
-      logging:
-        options:
-          max-size: "10m"
-          max-file: "10"
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    image: mservicet-config
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    image: mservicet-registry
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8761:8761
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
 
   gateway-point:
-      environment:
-        CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
-      image: mservicet-gateway
-      restart: always
-      depends_on:
-        config:
-          condition: service_healthy
-      ports:
-        - 80:4000
-      logging:
-        options:
-          max-size: "10m"
-          max-file: "10"
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    image: mservicet-gateway-point
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 80:4000
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
 
   auth-service:
     environment:
-      CONFIG_SERVICE_PASSWORD: ${CONFIG_SERVICE_PASSWORD}
-      MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+      ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
     image: mservicet-auth-service
     restart: always
     depends_on:
@@ -42,7 +58,7 @@ services:
 
   auth-mongodb:
     environment:
-      MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
     image: mservicet-mongodb
     restart: always
     logging:
@@ -50,46 +66,27 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  eureka:
-      environment:
-        CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-      image: mservicet-eureka
-      restart: always
-      depends_on:
-        config:
-          condition: service_healthy
-      ports:
-        - 8761:8761
-      logging:
-        options:
-          max-size: "10m"
-          max-file: "10"
-
-  monitoring:
+  account-service:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    image: mservicet-monitoring
+      ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
+    image: mservicet-account-service
     restart: always
     depends_on:
       config:
         condition: service_healthy
-    ports:
-      - 9000:8080
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  turbine-stream-service:
+  account-mongodb:
     environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    image: mservicet-turbine-stream-service
+      INIT_DUMP: account-service-dump.js
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
+    image: mservicet-mongodb
     restart: always
-    depends_on:
-      config:
-        condition: service_healthy
-    ports:
-      - 8989:8989
     logging:
       options:
         max-size: "10m"

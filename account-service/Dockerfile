@@ -2,6 +2,6 @@ FROM java:8-jre
 MAINTAINER Oleksandr Kuzmin <spykerstar@gmail.com>
 
 ADD ./target/account-service.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/account-service.jar"]
+CMD ["java", "-Xmx400m", "-jar", "/app/account-service.jar"]
 
-EXPOSE 5000
+EXPOSE 6000
