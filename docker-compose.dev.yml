@@ -31,3 +31,5 @@ services:
 
   registry:
     build: registry
+    ports:
+      - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT

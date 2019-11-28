@@ -26,8 +26,6 @@ services:
     depends_on:
       config:
         condition: service_healthy
-    ports:
-      - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"
