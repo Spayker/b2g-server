@@ -46,7 +46,7 @@ services:
   device-service:
     environment:
       JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${DEVICE_SERVICE_DEV_DEBUG_PORT}
-    build: account-service
+    build: device-service
     ports:
       - $DEVICE_SERVICE_DEV_PORT:$DEVICE_SERVICE_DEV_PORT
       - $DEVICE_SERVICE_DEV_DEBUG_PORT:$DEVICE_SERVICE_DEV_DEBUG_PORT
