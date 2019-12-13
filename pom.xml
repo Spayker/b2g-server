@@ -10,19 +10,20 @@
     <packaging>pom</packaging>
     <name>mservicet</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
+        <java.version>11</java.version>
+        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+        <spring.boot.maven.plugin.version>2.1.8.RELEASE</spring.boot.maven.plugin.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.4.RELEASE</version>
         <relativePath/>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
-        <java.version>11</java.version>
-        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
