@@ -16,6 +16,7 @@
         <java.version>11</java.version>
         <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
         <spring.boot.maven.plugin.version>2.1.8.RELEASE</spring.boot.maven.plugin.version>
+        <embed.mongo.version>2.2.0</embed.mongo.version>
     </properties>
 
     <parent>

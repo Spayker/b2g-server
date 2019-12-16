@@ -15,10 +15,6 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<embed.mongo.version>2.2.0</embed.mongo.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
