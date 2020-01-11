@@ -1,14 +1,15 @@
 package com.spayker.device.controller;
 
 import com.spayker.device.domain.Device;
-import com.spayker.device.domain.User;
 import com.spayker.device.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @RestController
 public class DeviceController {
@@ -16,24 +17,18 @@ public class DeviceController {
 	@Autowired
 	private DeviceService deviceService;
 
-	@PreAuthorize("#oauth2.hasScope('server') or #name.equals('demo')")
-	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
-	public Device getAccountByName(@PathVariable String name) {
-		return deviceService.findByName(name);
+	@RequestMapping(path = "/{deviceId}", method = RequestMethod.GET)
+	public Device getDeviceById(@PathVariable String deviceId) {
+		return deviceService.findByDeviceId(deviceId);
 	}
 
-	@RequestMapping(path = "/current", method = RequestMethod.GET)
-	public Device getCurrentAccount(Principal principal) {
-		return deviceService.findByName(principal.getName());
-	}
-
-	@RequestMapping(path = "/current", method = RequestMethod.PUT)
-	public void saveCurrentAccount(Principal principal, @Valid @RequestBody Device device) {
-		deviceService.saveChanges(principal.getName(), device);
+	@RequestMapping(path = "/", method = RequestMethod.PUT)
+	public void updateDeviceData(@Valid @RequestBody Device device) {
+		deviceService.saveChanges(device);
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
-	public Device createNewAccount(@Valid @RequestBody User user) {
-		return deviceService.create(user);
+	public Device createNewDevice(@Valid @RequestBody Device device) {
+		return deviceService.create(device);
 	}
 }

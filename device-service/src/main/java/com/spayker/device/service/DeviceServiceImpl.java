@@ -1,16 +1,15 @@
 package com.spayker.device.service;
 
-import com.spayker.device.client.AuthServiceClient;
+import com.spayker.device.client.AccountServiceClient;
 import com.spayker.device.domain.Device;
-import com.spayker.device.domain.User;
+import com.spayker.device.exception.DeviceException;
 import com.spayker.device.repository.DeviceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
-import java.util.Date;
+import static java.util.Optional.ofNullable;
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
@@ -18,45 +17,60 @@ public class DeviceServiceImpl implements DeviceService {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private AuthServiceClient authClient;
+	private AccountServiceClient accountClient;
 
 	@Autowired
 	private DeviceRepository repository;
 
 	@Override
-	public Device findByName(String accountName) {
-		Assert.hasLength(accountName);
-		return repository.findByName(accountName);
+	public Device findByDeviceId(String deviceId) {
+		if (deviceId.isEmpty()){ throw new IllegalArgumentException("Device id can not be empty"); }
+		return repository.findByDeviceId(deviceId);
 	}
 
 	@Override
-	public Device create(User user) {
+	public Device create(Device device) {
+		Device existing = repository.findByDeviceId(device.getDeviceId());
+		if (existing == null){
 
-		Device existing = repository.findByName(user.getUsername());
-		Assert.isNull(existing, "account already exists: " + user.getUsername());
+			String username = device.getUserName();
+			if (username == null){
+				throw new DeviceException("username is null, can not attach device: " + device.getDeviceId());
+			}
 
-		authClient.createUser(user);
-		Device account = new Device();
-		account.setName(user.getUsername());
-		account.setLastSeen(new Date());
+			if (username.isEmpty() || username.isBlank()){
+				throw new DeviceException("username is empty, can not attach device: " + device.getDeviceId());
+			}
 
-		repository.save(account);
-
-		log.info("new account has been created: " + account.getName());
-
-		return account;
+			String account = accountClient.getAccountByName(username);
+			if(account != null){
+				repository.save(device);
+				log.info("new device has been created: " + device.getDeviceId());
+				return device;
+			} else {
+				throw new DeviceException("Account with name: " + username + " has not been registered yet");
+			}
+		} else {
+			throw new DeviceException("device with id: " + device.getDeviceId() + " already exists");
+		}
 	}
 
 	@Override
-	public void saveChanges(String name, Device update) {
+	public void saveChanges(Device device) {
 
-		Device device = repository.findByName(name);
-		Assert.notNull(device, "can't find account with name " + name);
+		String deviceId = device.getDeviceId();
+		if(deviceId.isEmpty()){
+			throw new DeviceException("Device with id can not be empty");
+		}
 
-		device.setNote(update.getNote());
-		device.setLastSeen(new Date());
-		repository.save(device);
+		Device storedDevice = ofNullable(repository.findByDeviceId(device.getDeviceId()))
+				.orElseThrow(() -> new IllegalArgumentException("Device with id " + deviceId + " does not exist"));
 
-		log.debug("device {} changes has been saved", name);
+		storedDevice.setUserName(device.getUserName());
+		storedDevice.setHrData(device.getHrData());
+		storedDevice.setDate(device.getDate());
+		repository.save(storedDevice);
+
+		log.debug("device {} changes has been saved", deviceId);
 	}
 }

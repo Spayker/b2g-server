@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -30,18 +32,25 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	public Account findById(String accountId) {
+		Assert.hasLength(accountId);
+		Optional<Account> foundAccount = repository.findById(accountId);
+		return foundAccount.orElse(null);
+	}
+
+	@Override
 	public Account create(User user) {
 
 		Account existing = repository.findByName(user.getUsername());
 		Assert.isNull(existing, "account already exists: " + user.getUsername());
 
 		authClient.createUser(user);
-		Account account = new Account();
-		account.setName(user.getUsername());
-		account.setLastSeen(new Date());
+		Account account = Account.builder()
+				.name(user.getUsername())
+				.lastSeen(new Date())
+				.build();
 
 		repository.save(account);
-
 		log.info("new account has been created: " + account.getName());
 
 		return account;
@@ -52,11 +61,9 @@ public class AccountServiceImpl implements AccountService {
 
 		Account account = repository.findByName(name);
 		Assert.notNull(account, "can't find account with name " + name);
-
-		account.setNote(update.getNote());
 		account.setLastSeen(new Date());
+		account.setDeviceIds(update.getDeviceIds());
 		repository.save(account);
-
 		log.debug("account {} changes has been saved", name);
 	}
 }

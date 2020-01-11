@@ -1,13 +1,12 @@
 package com.spayker.device.service;
 
 import com.spayker.device.domain.Device;
-import com.spayker.device.domain.User;
 
 public interface DeviceService {
 
-	Device findByName(String accountName);
+	Device findByDeviceId(String deviceId);
 
-	Device create(User user);
+	Device create(Device device);
 
-	void saveChanges(String name, Device update);
+	void saveChanges(Device update);
 }
