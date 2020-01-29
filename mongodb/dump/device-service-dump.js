@@ -1,16 +1,15 @@
 /**
- * Creates pre-filled demo account
+ * Creates pre-filled demo device
  */
 
 print('dump start');
 
 db.devices.update(
-    { "_id": "demo" },
     {
-        "_id": "demo",
-        "lastSeen": new Date(),
-        "note": "demo note",
-        "data": []
+        "deviceId": "343452345",
+        "username": "user1",
+        "date": new Date(),
+        "hrData": "72"
     },
     { upsert: true }
 );
