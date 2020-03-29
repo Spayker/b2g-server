@@ -20,8 +20,6 @@ Following technologies will be used:
 7) Docker
 
 ## Server Review
-Main components of SBP are described below on scheme:
-![alt text](resources/diagrams/B2G_architecture.png)
 
 ## How to get started
 
