@@ -11,19 +11,31 @@ on local data based. It will have two modes which define scenarious as follows:
 
 ### Stack of technologies
 Following technologies will be used:
-1) Java 8
-2) Spring Boot
+1) Java 11 (OpenJDK)
+2) Spring Boot (2.1.4.RELEASE)
 3) Spring Data
 4) Spring REST
 5) JUnit, Mockito
 6) Maven
 7) Docker
+8) Docker Compose (3.7)
 
 ## Server Review
+Current server's concept looks like below
+![alt text](resources/diagrams/B2G_server_architecture.jpg)
+
+Data structure for Stage 1 looks like:
+![alt text](resources/diagrams/B2G_db_mk2.png)
 
 ## How to get started
+1) Compile sources staying in project root folder by typing in terminal: mvn clean install
+2) Enable Docker plugin (IDEA: settings -> plugins -> Docker)
+3) Run docker-compose script by typing: sudo docker-compose -f ./docker-compose.yml -f ./docker-compose.dev.yml up
+4) Check what docker plugin shows and check there running containers
 
-## How to use
+## Links
+Trello Board: https://trello.com/b/1uTb2b5M/b2g-server
+Dzone Article: https://dzone.com/articles/miband-3-and-react-native-part-three-server-side
 
 ## License
 MIT
