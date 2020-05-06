@@ -19,7 +19,7 @@ public class DeviceController {
 
 	@RequestMapping(path = "/{deviceId}", method = RequestMethod.GET)
 	public Device getDeviceById(@PathVariable String deviceId) {
-		return deviceService.findByDeviceId(deviceId);
+		return deviceService.findByDeviceId(Long.valueOf(deviceId));
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.PUT)

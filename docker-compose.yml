@@ -63,15 +63,12 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  auth-mongodb:
+  auth-mysqld:
+    image: mservicet-auth-mysqld
     environment:
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    image: mservicet-mongodb
+      MYSQL_DATABASE: spring_social
+      MYSQL_ROOT_PASSWORD: qwerty
     restart: always
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
 
   account-service:
     environment:
@@ -92,11 +89,11 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  account-mongodb:
+  account-mysqld:
     environment:
-      INIT_DUMP: account-service-dump.js
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    image: mservicet-mongodb
+      MYSQL_DATABASE: accountDB
+      MYSQL_ROOT_PASSWORD: qwerty
+    image: mservicet-mysqld
     restart: always
     logging:
       options:
@@ -122,11 +119,11 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  device-mongodb:
+  device-mysqld:
     environment:
-      INIT_DUMP: device-service-dump.js
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    image: mservicet-mongodb
+      MYSQL_DATABASE: deviceDB
+      MYSQL_ROOT_PASSWORD: qwerty
+    image: mservicet-mysqld
     restart: always
     logging:
       options:

@@ -50,7 +50,7 @@ public class DeviceControllerTest {
 	public void shouldGetDeviceById() throws Exception {
 
 		final Device device = Device.builder()
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.date(new Date().toString())
 				.build();
@@ -68,7 +68,7 @@ public class DeviceControllerTest {
 		final Device device = Device.builder()
 				.username("spayker")
 				.hrData("0")
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.date(new Date().toString())
 				.build();
 
@@ -85,7 +85,7 @@ public class DeviceControllerTest {
 	public void shouldSaveCurrentDevice() throws Exception {
 
 		final Device device = Device.builder()
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.username(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.date(new Date().toString())

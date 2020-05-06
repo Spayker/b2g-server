@@ -4,11 +4,9 @@ import com.spayker.device.domain.Device;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface DeviceRepository extends CrudRepository<Device, String> {
+public interface DeviceRepository extends CrudRepository<Device, Long> {
 
-	Device findByDeviceId(String deviceId);
+	Device findByDeviceId(Long deviceId);
 
 }

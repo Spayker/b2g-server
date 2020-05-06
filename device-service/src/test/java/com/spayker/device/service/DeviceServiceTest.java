@@ -38,7 +38,7 @@ public class DeviceServiceTest {
 	@Test
 	public void shouldFindDeviceById() {
 		final Device device = Device.builder()
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
@@ -50,7 +50,7 @@ public class DeviceServiceTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldFailWhenNameIsEmpty() {
-		deviceService.findByDeviceId("");
+		deviceService.findByDeviceId(Long.parseLong(""));
 	}
 
 	@Test
@@ -58,7 +58,7 @@ public class DeviceServiceTest {
 		final int expectedCallTimes = 1;
 		Device device = Device.builder()
 				.username(RandomStringUtils.randomAlphabetic(6))
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.hrData(RandomStringUtils.randomNumeric(10))
 				.date(new Date().toString())
 				.build();
@@ -74,7 +74,7 @@ public class DeviceServiceTest {
 	@Test
 	public void shouldSaveChangesWhenUpdatedDeviceGiven() {
 		final Device update = Device.builder()
-				.deviceId("123123123")
+				.deviceId(123123123L)
 				.date(new Date().toString())
 				.hrData("99")
 				.build();
@@ -94,13 +94,13 @@ public class DeviceServiceTest {
 	public void shouldFailWhenNoDevicesExistedWithGivenName() {
 		final Device update = getStubDevice();
 
-		when(deviceService.findByDeviceId("test")).thenReturn(null);
+		when(deviceService.findByDeviceId(12345L)).thenReturn(null);
 		deviceService.saveChanges(update);
 	}
 
 	private Device getStubDevice() {
 		return Device.builder()
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
