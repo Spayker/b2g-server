@@ -25,10 +25,10 @@ services:
       - $AUTH_SERVICE_DEV_PORT:$AUTH_SERVICE_DEV_PORT
       - $AUTH_SERVICE_DEV_DEBUG_PORT:$AUTH_SERVICE_DEV_DEBUG_PORT
 
-  auth-mongodb:
-    build: mongodb
+  auth-mysqld:
+    build: mysqld
     ports:
-      - $AUTH_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
+      - $AUTH_MYSQLDB_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
 
   account-service:
     environment:
@@ -38,10 +38,10 @@ services:
       - $ACCOUNT_SERVICE_DEV_PORT:$ACCOUNT_SERVICE_DEV_PORT
       - $ACCOUNT_SERVICE_DEV_DEBUG_PORT:$ACCOUNT_SERVICE_DEV_DEBUG_PORT
 
-  account-mongodb:
-    build: mongodb
+  account-mysqld:
+    build: mysqld
     ports:
-      - $ACCOUNT_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
+      - $ACCOUNT_MYSQLDB_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
 
   device-service:
     environment:
@@ -51,10 +51,10 @@ services:
       - $DEVICE_SERVICE_DEV_PORT:$DEVICE_SERVICE_DEV_PORT
       - $DEVICE_SERVICE_DEV_DEBUG_PORT:$DEVICE_SERVICE_DEV_DEBUG_PORT
 
-  device-mongodb:
-    build: mongodb
+  device-mysqld:
+    build: mysqld
     ports:
-      - $DEVICE_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
+      - $DEVICE_MYSQLDB_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
 
   registry:
     environment:

@@ -23,8 +23,7 @@ public class DeviceServiceImpl implements DeviceService {
 	private DeviceRepository repository;
 
 	@Override
-	public Device findByDeviceId(String deviceId) {
-		if (deviceId.isEmpty()){ throw new IllegalArgumentException("Device id can not be empty"); }
+	public Device findByDeviceId(Long deviceId) {
 		return repository.findByDeviceId(deviceId);
 	}
 
@@ -58,10 +57,7 @@ public class DeviceServiceImpl implements DeviceService {
 	@Override
 	public void saveChanges(Device device) {
 
-		String deviceId = device.getDeviceId();
-		if(deviceId.isEmpty()){
-			throw new DeviceException("Device with id can not be empty");
-		}
+		Long deviceId = device.getDeviceId();
 
 		Device storedDevice = ofNullable(repository.findByDeviceId(device.getDeviceId()))
 				.orElseThrow(() -> new IllegalArgumentException("Device with id " + deviceId + " does not exist"));

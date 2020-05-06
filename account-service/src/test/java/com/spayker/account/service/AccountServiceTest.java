@@ -75,7 +75,6 @@ public class AccountServiceTest {
 		final Account update = Account.builder()
 				.name("test")
 				.lastSeen(new Date())
-				.deviceIds(Collections.emptyList())
 				.build();
 
 		final Account account = Account.builder().build();

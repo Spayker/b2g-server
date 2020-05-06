@@ -5,14 +5,17 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
 @RunWith(SpringRunner.class)
-@DataMongoTest
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = NONE)
 public class DeviceRepositoryTest {
 
 	@Autowired
@@ -24,11 +27,11 @@ public class DeviceRepositoryTest {
 		final Device stub = createStubDevice();
 
 		// when
-		repository.save(stub);
+		Device saved = repository.save(stub);
 
 		// then
-		Device found = repository.findByDeviceId(stub.getDeviceId());
-		assertEquals(stub.getDeviceId(), found.getDeviceId());
+		Device found = repository.findByDeviceId(saved.getDeviceId());
+		assertEquals(saved.getDeviceId(), found.getDeviceId());
 		assertEquals(stub.getHrData(), found.getHrData());
 		assertEquals(stub.getDate(), found.getDate());
 		repository.delete(stub);
@@ -36,7 +39,7 @@ public class DeviceRepositoryTest {
 
 	private Device createStubDevice() {
 		return Device.builder()
-				.deviceId(RandomStringUtils.randomNumeric(10))
+				.deviceId(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();

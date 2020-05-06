@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService {
 		if(accountId.length() == 0){
 			throw new IllegalArgumentException("provided accountId has 0 String length");
 		}
-		Optional<Account> foundAccount = repository.findById(accountId);
+		Optional<Account> foundAccount = repository.findById(Long.valueOf(accountId));
 		return foundAccount.orElse(null);
 	}
 
@@ -66,7 +66,6 @@ public class AccountServiceImpl implements AccountService {
 			throw new AccountException("can't find account with name " + name);
 		} else {
 			account.setLastSeen(new Date());
-			account.setDeviceIds(update.getDeviceIds());
 			repository.save(account);
 			log.debug("account {} changes has been saved", name);
 		}
