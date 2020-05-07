@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-point
+    name: account-gateway
   cloud:
     config:
       uri: http://config:${CONFIG_SERVICE_DEV_PORT}
