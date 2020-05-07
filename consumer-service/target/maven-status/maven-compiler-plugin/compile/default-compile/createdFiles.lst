@@ -1,0 +1,12 @@
+com/spayker/consumer/ConsumerApplication.class
+com/spayker/consumer/client/AccountServiceClient.class
+com/spayker/consumer/config/GlobalExceptionHandler.class
+com/spayker/consumer/config/ResourceServerConfig.class
+com/spayker/consumer/service/ConsumerServiceImpl.class
+com/spayker/consumer/controller/ErrorHandler.class
+com/spayker/consumer/service/ConsumerService.class
+com/spayker/consumer/controller/ServiceController.class
+com/spayker/consumer/domain/Consumer.class
+com/spayker/consumer/domain/Consumer$ConsumerBuilder.class
+com/spayker/consumer/exception/ConsumerException.class
+com/spayker/consumer/repository/ConsumerRepository.class

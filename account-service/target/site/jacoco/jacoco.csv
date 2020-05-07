@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+account-consumer,com.spayker.account.service,AccountServiceImpl,26,85,3,5,5,22,3,6,1,4
+account-consumer,com.spayker.account.domain,Account.AccountBuilder,20,25,0,0,0,1,3,4,3,4
+account-consumer,com.spayker.account.domain,Account,165,40,31,1,1,7,23,8,7,8
+account-consumer,com.spayker.account.domain,User,0,17,0,0,0,7,0,5,0,5
+account-consumer,com.spayker.account.exception,AccountException,12,4,0,0,6,2,3,1,3,1
+account-consumer,com.spayker.account.config,GlobalExceptionHandler,118,7,0,0,15,2,4,2,4,2
+account-consumer,com.spayker.account.config,ResourceServerConfig,0,55,0,0,0,11,0,6,0,6
+account-consumer,com.spayker.account.service.security,CustomUserInfoTokenServices,209,54,14,0,43,8,16,2,9,2
+account-consumer,com.spayker.account,AccountApplication,5,3,0,0,2,1,1,1,1,1
+account-consumer,com.spayker.account.controller,AccountController,5,8,0,0,1,2,1,2,1,2
+account-consumer,com.spayker.account.controller,ErrorHandler,6,8,0,0,2,2,1,1,1,1

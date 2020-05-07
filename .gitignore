@@ -24,14 +24,14 @@ hs_err_pid*
 
 .idea
 *.iml
-auth-service/*.iml
+auth-consumer/*.iml
 config/*.iml
 gateway-point/*.iml
 registry/*.iml
-account-service/*.iml
-auth-service/target
+account-consumer/*.iml
+auth-consumer/target
 config/target
 gateway-point/target
 registry/target
-account-service/target
-device-service/target
+account-consumer/target
+consumer-account/target

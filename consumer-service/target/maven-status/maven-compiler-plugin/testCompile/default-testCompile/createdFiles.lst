@@ -1,0 +1,4 @@
+com/spayker/consumer/repository/ConsumerRepositoryTest.class
+com/spayker/consumer/controller/ConsumerControllerTest.class
+com/spayker/consumer/ConsumerApplicationTests.class
+com/spayker/consumer/service/ConsumerServiceTest.class

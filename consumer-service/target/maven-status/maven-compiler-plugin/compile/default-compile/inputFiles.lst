@@ -1,0 +1,11 @@
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/config/ResourceServerConfig.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/service/ConsumerService.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/domain/Consumer.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/service/ConsumerServiceImpl.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/ConsumerApplication.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/repository/ConsumerRepository.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/controller/ErrorHandler.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/exception/ConsumerException.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/config/GlobalExceptionHandler.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/controller/ServiceController.java
+/home/spayker/projects/b2g/server/consumer-service/src/main/java/com/spayker/consumer/client/AccountServiceClient.java
