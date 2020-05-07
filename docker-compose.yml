@@ -100,6 +100,22 @@ services:
         max-size: "10m"
         max-file: "10"
 
+  consumer-gateway:
+    environment:
+      CONFIG_SERVICE_PASSWORD:    $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_DEV_PORT:    $CONFIG_SERVICE_DEV_PORT
+      REGISTRY_SERVICE_DEV_PORT:  $REGISTRY_SERVICE_DEV_PORT
+      AUTH_SERVICE_DEV_PORT:      $AUTH_SERVICE_DEV_PORT
+      CONSUMER_GATEWAY_DEV_PORT:  $CONSUMER_GATEWAY_DEV_PORT
+    image: mservicet-consumer-gateway
+    restart: always
+    depends_on:
+      - config
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
   consumer-service:
     environment:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD

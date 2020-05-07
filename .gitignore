@@ -28,10 +28,13 @@ auth-consumer/*.iml
 config/*.iml
 gateway-point/*.iml
 registry/*.iml
-account-consumer/*.iml
+account-service/*.iml
+account-service/target
+consumer-service/*.iml
+consumer-service/target
 auth-consumer/target
 config/target
 gateway-point/target
 registry/target
-account-consumer/target
-consumer-account/target
+consumer-gateway/target
+consumer-gateway/*.iml
