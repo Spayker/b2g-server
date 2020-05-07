@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="local dev debug registry service" type="Remote">
+  <configuration default="false" name="local dev debug registry consumer" type="Remote">
     <module name="registry" />
     <option name="USE_SOCKET_TRANSPORT" value="true" />
     <option name="SERVER_MODE" value="false" />

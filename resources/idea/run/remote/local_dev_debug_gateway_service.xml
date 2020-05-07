@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="local dev debug gateway service" type="Remote">
+  <configuration default="false" name="local dev debug gateway consumer" type="Remote">
     <module name="gateway-point" />
     <option name="USE_SOCKET_TRANSPORT" value="true" />
     <option name="SERVER_MODE" value="false" />

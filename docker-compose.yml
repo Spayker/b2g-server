@@ -49,7 +49,7 @@ services:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_SERVICE_PASSWORD:             $ACCOUNT_SERVICE_PASSWORD
-      SERVICE_ACCOUNT_PASSWORD:              $SERVICE_ACCOUNT_PASSWORD
+      CONSUMER_SERVICE_PASSWORD:              $CONSUMER_SERVICE_PASSWORD
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
       MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
@@ -100,17 +100,17 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  service-account:
+  consumer-service:
     environment:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
-      SERVICE_ACCOUNT_PASSWORD:             $SERVICE_ACCOUNT_PASSWORD
+      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
       MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
-      SERVICE_ACCOUNT_DEV_PORT:             $SERVICE_ACCOUNT_DEV_PORT
+      CONSUMER_SERVICE_DEV_PORT:            $CONSUMER_SERVICE_DEV_PORT
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
       MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
-    image: mservicet-service-account
+    image: mservicet-consumer-service
     restart: always
     depends_on:
       - config
@@ -119,9 +119,9 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  service-mysqld:
+  consumer-mysqld:
     environment:
-      MYSQL_DATABASE: serviceDB
+      MYSQL_DATABASE: consumerDB
       MYSQL_ROOT_PASSWORD: qwerty
     image: mservicet-mysqld
     restart: always
