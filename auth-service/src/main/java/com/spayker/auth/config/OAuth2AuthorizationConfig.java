@@ -43,8 +43,8 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
-                .withClient("device-service")
-                .secret(env.getProperty("DEVICE_SERVICE_PASSWORD"))
+                .withClient("service-account")
+                .secret(env.getProperty("SERVICE_ACCOUNT_PASSWORD"))
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server");
     }

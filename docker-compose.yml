@@ -49,11 +49,11 @@ services:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_SERVICE_PASSWORD:             $ACCOUNT_SERVICE_PASSWORD
-      DEVICE_SERVICE_PASSWORD:              $DEVICE_SERVICE_PASSWORD
+      SERVICE_ACCOUNT_PASSWORD:              $SERVICE_ACCOUNT_PASSWORD
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
-      MONGODB_PASSWORD:                     $MONGODB_PASSWORD
+      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
-      MONGODB_SERVICE_INTERNAL_DEV_PORT:    $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
     image: mservicet-auth-service
     restart: always
     depends_on:
@@ -75,10 +75,10 @@ services:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_SERVICE_PASSWORD:             $ACCOUNT_SERVICE_PASSWORD
-      MONGODB_PASSWORD:                     $MONGODB_PASSWORD
+      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
       ACCOUNT_SERVICE_DEV_PORT:             $ACCOUNT_SERVICE_DEV_PORT
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
-      MONGODB_SERVICE_INTERNAL_DEV_PORT:    $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
     image: mservicet-account-service
     restart: always
@@ -100,17 +100,17 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  device-service:
+  service-account:
     environment:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
-      DEVICE_SERVICE_PASSWORD:              $DEVICE_SERVICE_PASSWORD
-      MONGODB_PASSWORD:                     $MONGODB_PASSWORD
-      DEVICE_SERVICE_DEV_PORT:              $DEVICE_SERVICE_DEV_PORT
+      SERVICE_ACCOUNT_PASSWORD:             $SERVICE_ACCOUNT_PASSWORD
+      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
+      SERVICE_ACCOUNT_DEV_PORT:             $SERVICE_ACCOUNT_DEV_PORT
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
-      MONGODB_SERVICE_INTERNAL_DEV_PORT:    $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
-    image: mservicet-device-service
+    image: mservicet-service-account
     restart: always
     depends_on:
       - config
@@ -119,7 +119,7 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  device-mysqld:
+  service-mysqld:
     environment:
       MYSQL_DATABASE: deviceDB
       MYSQL_ROOT_PASSWORD: qwerty

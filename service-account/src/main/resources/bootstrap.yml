@@ -2,7 +2,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: device-service
+    name: service-account
   cloud:
     config:
       uri: http://config:${CONFIG_SERVICE_DEV_PORT}

@@ -1,8 +1,8 @@
 security:
   oauth2:
     client:
-      clientId: device-service
-      clientSecret: ${DEVICE_SERVICE_PASSWORD}
+      clientId: service-account
+      clientSecret: ${SERVICE_ACCOUNT_PASSWORD}
       accessTokenUri: http://auth-service:${AUTH_SERVICE_DEV_PORT}/mservicet/oauth/token
       grant-type: client_credentials
       scope: server
@@ -12,11 +12,11 @@ spring:
     mongodb:
       host: device-mongodb
       username: user
-      password: ${MONGODB_PASSWORD}
+      password: ${MYSQLDB_PASSWORD}
       database: mservicet
-      port: ${MONGODB_SERVICE_INTERNAL_DEV_PORT}
+      port: ${MYSQLDB_SERVICE_INTERNAL_DEV_PORT}
 
 server:
   servlet:
     context-path: /devices
-  port: ${DEVICE_SERVICE_DEV_PORT}
+  port: ${SERVICE_ACCOUNT_DEV_PORT}
