@@ -1,6 +1,6 @@
-package com.spayker.device.repository;
+package com.spayker.service.repository;
 
-import com.spayker.device.domain.Device;
+import com.spayker.service.domain.Device;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

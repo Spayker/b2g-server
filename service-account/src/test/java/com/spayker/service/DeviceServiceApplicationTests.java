@@ -1,4 +1,4 @@
-package com.spayker.device;
+package com.spayker.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

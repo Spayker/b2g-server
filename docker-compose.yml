@@ -121,7 +121,7 @@ services:
 
   service-mysqld:
     environment:
-      MYSQL_DATABASE: deviceDB
+      MYSQL_DATABASE: serviceDB
       MYSQL_ROOT_PASSWORD: qwerty
     image: mservicet-mysqld
     restart: always

@@ -1,4 +1,4 @@
-package com.spayker.device;
+package com.spayker.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +14,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class DeviceApplication {
+public class ServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DeviceApplication.class, args);
+		SpringApplication.run(ServiceApplication.class, args);
 	}
 
 }

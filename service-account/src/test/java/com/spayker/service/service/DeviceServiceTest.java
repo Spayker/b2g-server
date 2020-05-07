@@ -1,8 +1,8 @@
-package com.spayker.device.service;
+package com.spayker.service.service;
 
-import com.spayker.device.client.AccountServiceClient;
-import com.spayker.device.domain.Device;
-import com.spayker.device.repository.DeviceRepository;
+import com.spayker.service.client.AccountServiceClient;
+import com.spayker.service.domain.Device;
+import com.spayker.service.repository.DeviceRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.spayker.device.domain;
+package com.spayker.service.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

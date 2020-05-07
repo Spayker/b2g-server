@@ -1,9 +1,9 @@
-package com.spayker.device.service;
+package com.spayker.service.service;
 
-import com.spayker.device.client.AccountServiceClient;
-import com.spayker.device.domain.Device;
-import com.spayker.device.exception.DeviceException;
-import com.spayker.device.repository.DeviceRepository;
+import com.spayker.service.client.AccountServiceClient;
+import com.spayker.service.domain.Device;
+import com.spayker.service.exception.DeviceException;
+import com.spayker.service.repository.DeviceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

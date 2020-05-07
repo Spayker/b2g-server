@@ -1,8 +1,8 @@
-package com.spayker.device.controller;
+package com.spayker.service.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spayker.device.domain.Device;
-import com.spayker.device.service.DeviceService;
+import com.spayker.service.domain.Device;
+import com.spayker.service.service.DeviceService;
 import com.sun.security.auth.UserPrincipal;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;

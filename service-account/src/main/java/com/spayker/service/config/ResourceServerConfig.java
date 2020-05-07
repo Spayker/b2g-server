@@ -1,4 +1,4 @@
-package com.spayker.device.config;
+package com.spayker.service.config;
 
 import feign.RequestInterceptor;
 import org.springframework.boot.context.properties.ConfigurationProperties;

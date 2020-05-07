@@ -1,7 +1,7 @@
-package com.spayker.device.controller;
+package com.spayker.service.controller;
 
-import com.spayker.device.domain.Device;
-import com.spayker.device.service.DeviceService;
+import com.spayker.service.domain.Device;
+import com.spayker.service.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

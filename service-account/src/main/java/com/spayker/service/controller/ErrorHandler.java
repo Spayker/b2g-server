@@ -1,4 +1,4 @@
-package com.spayker.device.controller;
+package com.spayker.service.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

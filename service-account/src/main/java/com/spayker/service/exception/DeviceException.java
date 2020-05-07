@@ -1,4 +1,4 @@
-package com.spayker.device.exception;
+package com.spayker.service.exception;
 
 public class DeviceException extends RuntimeException {
 

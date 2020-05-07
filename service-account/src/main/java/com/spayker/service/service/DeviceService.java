@@ -1,6 +1,6 @@
-package com.spayker.device.service;
+package com.spayker.service.service;
 
-import com.spayker.device.domain.Device;
+import com.spayker.service.domain.Device;
 
 public interface DeviceService {
 

@@ -1,6 +1,6 @@
-package com.spayker.device.config;
+package com.spayker.service.config;
 
-import com.spayker.device.exception.DeviceException;
+import com.spayker.service.exception.DeviceException;
 import feign.FeignException;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;

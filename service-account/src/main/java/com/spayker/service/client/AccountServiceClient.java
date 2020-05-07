@@ -1,4 +1,4 @@
-package com.spayker.device.client;
+package com.spayker.service.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
