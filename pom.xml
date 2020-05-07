@@ -41,10 +41,11 @@
     <modules>
         <module>config</module>
         <module>registry</module>
-        <module>gateway-point</module>
         <module>auth-service</module>
         <module>account-service</module>
+        <module>gateway-point</module>
         <module>consumer-service</module>
+        <module>consumer-gateway</module>
     </modules>
 
 </project>
