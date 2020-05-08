@@ -59,14 +59,14 @@ public class ConsumerServiceTest {
 		Consumer consumer = Consumer.builder()
 				.name(RandomStringUtils.randomAlphabetic(6))
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 
 		when(accountServiceClient.getAccountByName(anyString())).thenReturn("account");
 		Consumer storedConsumer = consumerService.create(consumer);
 
 		assertEquals(storedConsumer.getId(), consumer.getId());
-		assertNotNull(storedConsumer.getDate());
+		assertNotNull(storedConsumer.getCreatedDate());
 		verify(repository, times(expectedCallTimes)).save(consumer);
 	}
 
@@ -81,7 +81,7 @@ public class ConsumerServiceTest {
 	private Consumer getStubConsumer() {
 		return Consumer.builder()
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 	}
 }

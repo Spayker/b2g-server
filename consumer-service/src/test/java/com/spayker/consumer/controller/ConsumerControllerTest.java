@@ -51,7 +51,7 @@ public class ConsumerControllerTest {
 
 		final Consumer consumer = Consumer.builder()
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 
 		when(this.ConsumerService.findByConsumerId(consumer.getId())).thenReturn(consumer);
@@ -67,7 +67,7 @@ public class ConsumerControllerTest {
 		final Consumer consumer = Consumer.builder()
 				.name("spayker")
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 
 		String json = mapper.writeValueAsString(consumer);
@@ -85,7 +85,7 @@ public class ConsumerControllerTest {
 		final Consumer consumer = Consumer.builder()
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
 				.name(RandomStringUtils.randomNumeric(10))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 
 		String json = mapper.writeValueAsString(consumer);

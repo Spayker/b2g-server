@@ -27,7 +27,19 @@ public class Account {
 
 	private String name;
 
-	private Date lastSeen;
+	private String email;
+
+	private Date createdDate;
+
+	private Date modifiedDate;
+
+	private int age;
+
+	private byte gender;
+
+	private int weight;
+
+	private int height;
 
 	@Length(min = 0, max = 20_000)
 	private String note;

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 @Data
 @Builder
 @Entity
-@Table(name = "device")
+@Table(name = "consumer")
 public class Consumer {
 
 	@Id
@@ -27,6 +28,10 @@ public class Consumer {
 
 	private String name;
 
-	private String date;
+	private String email;
+
+	private Date createdDate;
+
+	private Date modifiedDate;
 
 }

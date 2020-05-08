@@ -42,7 +42,7 @@ public class ConsumerRepositoryTest {
 	private Consumer createStubConsumer() {
 		return Consumer.builder()
 				.id(Long.parseLong(RandomStringUtils.randomNumeric(10)))
-				.date(new Date().toString())
+				.createdDate(new Date())
 				.build();
 	}
 }

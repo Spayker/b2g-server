@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
@@ -26,14 +27,14 @@ public class AccountRepositoryTest {
 		Account stub = getStubAccount();
 		repository.save(stub);
 
-		Account found = repository.findByName(stub.getName());
-		assertEquals(stub.getLastSeen(), found.getLastSeen());
+		List<Account> found = repository.findByName(stub.getName());
+		assertEquals(stub.getCreatedDate(), found.get(0).getCreatedDate());
 	}
 
 	private Account getStubAccount() {
 		return Account.builder()
 				.name("test")
-				.lastSeen(new Date())
+				.createdDate(new Date())
 				.build();
 	}
 }
