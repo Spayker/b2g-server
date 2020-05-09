@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +26,16 @@ public class ConsumerServiceImpl implements ConsumerService {
 	@Override
 	public Consumer findByConsumerId(Long consumerId) {
 		return repository.findById(consumerId).orElse(null);
+	}
+
+	@Override
+	public List<Consumer> findConsumerByName(String consumerName) {
+		return repository.findByName(consumerName);
+	}
+
+	@Override
+	public Consumer findConsumerByEmail(String email) {
+		return repository.findByEmail(email);
 	}
 
 	@Override
@@ -62,7 +74,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 				.orElseThrow(() -> new IllegalArgumentException("Consumer with id " + consumerId + " does not exist"));
 
 		storedConsumer.setName(consumer.getName());
-		storedConsumer.setDate(consumer.getDate());
+		storedConsumer.setCreatedDate(consumer.getCreatedDate());
 		repository.save(storedConsumer);
 
 		log.debug("consumer {} changes has been saved", consumerId);

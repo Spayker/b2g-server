@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,7 +26,7 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository repository;
 
 	@Override
-	public Account findByName(String accountName) {
+	public List<Account> findAccountByName(String accountName) {
 		if(accountName.length() == 0){
 			throw new IllegalArgumentException("provided accountName has 0 String length");
 		}
@@ -33,7 +34,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account findById(String accountId) {
+	public Account findAccountById(String accountId) {
 		if(accountId.length() == 0){
 			throw new IllegalArgumentException("provided accountId has 0 String length");
 		}
@@ -42,13 +43,51 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	public Account findAccountByEmail(String email) {
+		if(email.length() == 0){
+			throw new IllegalArgumentException("provided email has 0 String length");
+		}
+		return repository.findByEmail(email);
+	}
+
+	@Override
+	public List<Account> findAccountByCreatedDate(Date createdDate) {
+		return repository.findByCreatedDate(createdDate);
+	}
+
+	@Override
+	public List<Account> findAccountByModifiedDate(Date modifiedDate) {
+		return repository.findByModifiedDate(modifiedDate);
+	}
+
+	@Override
+	public List<Account> findAccountByAge(int age) {
+		return repository.findByAge(age);
+	}
+
+	@Override
+	public List<Account> findAccountByGender(byte gender) {
+		return repository.findByGender(gender);
+	}
+
+	@Override
+	public List<Account> findAccountByWeight(int weight) {
+		return repository.findByWeight(weight);
+	}
+
+	@Override
+	public List<Account> findAccountByHeight(int height) {
+		return repository.findByHeight(height);
+	}
+
+	@Override
 	public Account create(User user) {
-		Account existing = repository.findByName(user.getUsername());
+		List<Account> existing = repository.findByName(user.getUsername());
 		if(existing == null){
 			authClient.createUser(user);
 			Account account = Account.builder()
 					.name(user.getUsername())
-					.lastSeen(new Date())
+					.createdDate(new Date())
 					.build();
 
 			repository.save(account);
@@ -61,12 +100,12 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void saveChanges(String name, Account update) {
-		Account account = repository.findByName(name);
-		if(account == null){
+		List<Account> accounts = repository.findByName(name);
+		if(accounts == null){
 			throw new AccountException("can't find account with name " + name);
 		} else {
-			account.setLastSeen(new Date());
-			repository.save(account);
+			// accounts.setModifiedDate(new Date());
+			// repository.save(accounts);
 			log.debug("account {} changes has been saved", name);
 		}
 	}
