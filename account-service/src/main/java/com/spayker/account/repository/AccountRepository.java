@@ -26,5 +26,4 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
 	List<Account> findByHeight(int height);
 
-
 }

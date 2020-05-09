@@ -94,4 +94,24 @@ public class AccountServiceTest {
 		when(accountService.findAccountByName("test")).thenReturn(null);
 		accountService.saveChanges("test", update);
 	}
+
+	@Test
+	public void shouldNotSaveAccountWhenNameIsNull(){
+
+	}
+
+	@Test
+	public void shouldNotSaveAccountWhenNameIsEmpty(){
+
+	}
+
+	@Test
+	public void shouldNotSaveAccountWhenEmailIsNull(){
+
+	}
+
+	@Test
+	public void shouldNotSaveAccountWhenEmailIsEmpty(){
+
+	}
 }

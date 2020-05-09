@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -35,13 +36,10 @@ public class Account {
 
 	private int age;
 
-	private byte gender;
+	private Gender gender;
 
 	private int weight;
 
 	private int height;
-
-	@Length(min = 0, max = 20_000)
-	private String note;
 
 }

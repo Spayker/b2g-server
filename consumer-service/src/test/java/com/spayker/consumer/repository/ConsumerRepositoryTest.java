@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
@@ -21,6 +20,12 @@ public class ConsumerRepositoryTest {
 
 	@Autowired
 	private ConsumerRepository repository;
+
+	// success creation
+	// failed creation
+	// success search
+	// failed search
+	// list search to prove it can return more than 1 element
 
 	@Test
 	public void shouldFindConsumerById() {
