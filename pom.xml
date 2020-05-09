@@ -41,7 +41,7 @@
     <modules>
         <module>config</module>
         <module>registry</module>
-        <module>auth-service</module>
+        <module>account-auth</module>
         <module>account-gateway</module>
         <module>account-service</module>
         <module>consumer-service</module>

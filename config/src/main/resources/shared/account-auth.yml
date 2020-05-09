@@ -16,4 +16,4 @@ spring:
 server:
   servlet:
     context-path: /mservicet
-  port: ${AUTH_SERVICE_DEV_PORT}
+  port: ${ACCOUNT_AUTH_DEV_PORT}
