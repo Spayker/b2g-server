@@ -3,7 +3,6 @@ package com.spayker.account.repository;
 import com.spayker.account.domain.Account;
 import com.spayker.account.util.factory.AccountFactory;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
