@@ -1,6 +1,6 @@
-package com.spayker.auth.repository;
+package com.spayker.account.auth.repository;
 
-import com.spayker.auth.domain.User;
+import com.spayker.account.auth.domain.User;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

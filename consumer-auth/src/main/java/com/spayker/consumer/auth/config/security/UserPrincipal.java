@@ -1,6 +1,6 @@
-package com.spayker.auth.config.security;
+package com.spayker.consumer.auth.config.security;
 
-import com.spayker.auth.domain.User;
+import com.spayker.consumer.auth.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,12 +32,12 @@ public class UserPrincipal implements UserDetails {
     }
 
     @Override
-    public boolean isAccountNonExpired() {
+    public boolean isconsumerNonExpired() {
         return true;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
+    public boolean isconsumerNonLocked() {
         return true;
     }
 

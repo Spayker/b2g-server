@@ -1,6 +1,6 @@
 spring:
   application:
-    name: account-auth
+    name: consumer-auth
   cloud:
     config:
       uri: http://config:${CONFIG_SERVICE_DEV_PORT}
