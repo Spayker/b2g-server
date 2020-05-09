@@ -1,7 +1,7 @@
-package com.spayker.auth.config.security;
+package com.spayker.account.auth.config.security;
 
-import com.spayker.auth.domain.User;
-import com.spayker.auth.repository.UserRepository;
+import com.spayker.account.auth.domain.User;
+import com.spayker.account.auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

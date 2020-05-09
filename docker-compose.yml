@@ -6,6 +6,9 @@ services:
       CONFIG_SERVICE_PASSWORD:             $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:             $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_AUTH_DEV_PORT:               $ACCOUNT_AUTH_DEV_PORT
+      ACCOUNT_GATEWAY_DEV_PORT:            $ACCOUNT_GATEWAY_DEV_PORT
+      CONSUMER_AUTH_DEV_PORT:              $CONSUMER_AUTH_DEV_PORT
+      CONSUMER_GATEWAY_DEV_PORT:           $CONSUMER_GATEWAY_DEV_PORT
       REGISTRY_SERVICE_DEV_PORT:           $REGISTRY_SERVICE_DEV_PORT
     image: mservicet-config
     restart: always
@@ -49,7 +52,6 @@ services:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_SERVICE_PASSWORD:             $ACCOUNT_SERVICE_PASSWORD
-      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
       ACCOUNT_AUTH_DEV_PORT:                $ACCOUNT_AUTH_DEV_PORT
       MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
@@ -63,8 +65,8 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  auth-mysqld:
-    image: mservicet-auth-mysqld
+  account-auth-mysqld:
+    image: mservicet-account-auth-mysqld
     environment:
       MYSQL_DATABASE: spring_social
       MYSQL_ROOT_PASSWORD: qwerty
@@ -99,6 +101,31 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  consumer-auth-service:
+    environment:
+      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
+      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
+      CONSUMWE_AUTH_DEV_PORT:               $CONSUMER_AUTH_DEV_PORT
+      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
+      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
+      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
+    image: mservicet-consumer-auth-service
+    restart: always
+    depends_on:
+      - config
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  consumer-auth-mysqld:
+    image: mservicet-consumer-auth-mysqld
+    environment:
+      MYSQL_DATABASE: spring_social
+      MYSQL_ROOT_PASSWORD: qwerty
+    restart: always
 
   consumer-gateway:
     environment:

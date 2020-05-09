@@ -1,4 +1,4 @@
-package com.spayker.auth.domain;
+package com.spayker.consumer.auth.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

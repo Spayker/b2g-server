@@ -1,7 +1,7 @@
-package com.spayker.auth.config;
+package com.spayker.consumer.auth.config;
 
-import com.spayker.auth.config.security.AuthenticationSuccessHandlerImpl;
-import com.spayker.auth.config.security.CustomUserDetails;
+import com.spayker.consumer.auth.config.security.AuthenticationSuccessHandlerImpl;
+import com.spayker.consumer.auth.config.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("com.spayker.auth.config")
+@ComponentScan("com.spayker.consumer.auth.config")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

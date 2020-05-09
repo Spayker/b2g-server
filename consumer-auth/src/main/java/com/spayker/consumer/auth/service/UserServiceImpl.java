@@ -1,7 +1,7 @@
-package com.spayker.auth.service;
+package com.spayker.consumer.auth.service;
 
-import com.spayker.auth.domain.User;
-import com.spayker.auth.repository.UserRepository;
+import com.spayker.consumer.auth.domain.User;
+import com.spayker.consumer.auth.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

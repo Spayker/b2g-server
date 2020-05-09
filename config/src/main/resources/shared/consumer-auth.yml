@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://account-auth-mysqld:${DEFAULT_MYSQL_DB_PORT}/spring_social?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://consumer-auth-mysqld:${DEFAULT_MYSQL_DB_PORT}/spring_social?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     username: root
     password: qwerty
   jpa:
@@ -16,4 +16,4 @@ spring:
 server:
   servlet:
     context-path: /mservicet
-  port: ${ACCOUNT_AUTH_DEV_PORT}
+  port: ${CONSUMER_AUTH_DEV_PORT}

@@ -1,7 +1,7 @@
-package com.spayker.auth.controller;
+package com.spayker.account.auth.controller;
 
-import com.spayker.auth.domain.User;
-import com.spayker.auth.service.UserService;
+import com.spayker.account.auth.domain.User;
+import com.spayker.account.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class AccountController {
 
 	@Autowired
 	private UserService userService;
