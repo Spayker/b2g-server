@@ -10,7 +10,7 @@ security:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://account-mysqld:${DEFAULT_MYSQL_DB_PORT}/accountDB?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://training-mysqld:${DEFAULT_MYSQL_DB_PORT}/trainingDB?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     username: root
     password: qwerty
     jpa:

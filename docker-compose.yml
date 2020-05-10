@@ -47,7 +47,7 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  auth-service:
+  account-auth:
     environment:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
@@ -86,17 +86,6 @@ services:
     restart: always
     depends_on:
       - config
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  account-mysqld:
-    environment:
-      MYSQL_DATABASE: accountDB
-      MYSQL_ROOT_PASSWORD: qwerty
-    image: mservicet-mysqld
-    restart: always
     logging:
       options:
         max-size: "10m"
@@ -162,9 +151,9 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  consumer-mysqld:
+  training-mysqld:
     environment:
-      MYSQL_DATABASE: consumerDB
+      MYSQL_DATABASE: trainingDB
       MYSQL_ROOT_PASSWORD: qwerty
     image: mservicet-mysqld
     restart: always
