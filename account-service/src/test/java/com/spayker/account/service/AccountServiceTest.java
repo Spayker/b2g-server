@@ -54,7 +54,7 @@ public class AccountServiceTest {
 	@ParameterizedTest
 	@MethodSource("provideCommonAccounts")
 	@DisplayName("Saves account by given account data")
-	public void shouldCreateAccountWithGivenUser(Account account) {
+	public void shouldCreateAccount(Account account) {
 		// when
 		Account savedAccount = accountService.create(account);
 

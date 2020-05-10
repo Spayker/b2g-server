@@ -1,7 +1,6 @@
 package com.spayker.account.service;
 
 import com.spayker.account.domain.Account;
-import com.spayker.account.domain.User;
 
 import java.util.Date;
 import java.util.List;

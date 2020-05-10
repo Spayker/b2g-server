@@ -2,7 +2,6 @@ package com.spayker.account.service;
 
 import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
-import com.spayker.account.domain.User;
 import com.spayker.account.exception.AccountException;
 import com.spayker.account.repository.AccountRepository;
 import org.slf4j.Logger;
@@ -56,9 +55,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> findAccountByModifiedDate(Date modifiedDate) {
-		return repository.findByModifiedDate(modifiedDate);
-	}
+	public List<Account> findAccountByModifiedDate(Date modifiedDate) { return repository.findByModifiedDate(modifiedDate); }
 
 	@Override
 	public List<Account> findAccountByAge(int age) {
