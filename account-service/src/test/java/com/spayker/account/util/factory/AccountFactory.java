@@ -28,4 +28,26 @@ public class AccountFactory {
                 .height(height)
                 .build();
     }
+
+    public static Account createAccount(Long id,
+                                        String name,
+                                        String email,
+                                        Date createDate,
+                                        Date modifiedDate,
+                                        int age,
+                                        Gender male,
+                                        int weight,
+                                        int height) {
+        return Account.builder()
+                .id(id)
+                .name(name)
+                .email(email)
+                .createdDate(createDate)
+                .modifiedDate(modifiedDate)
+                .age(age)
+                .gender(male)
+                .weight(weight)
+                .height(height)
+                .build();
+    }
 }

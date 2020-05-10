@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "account")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
 	@Id

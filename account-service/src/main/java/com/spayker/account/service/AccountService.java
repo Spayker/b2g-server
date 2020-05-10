@@ -20,13 +20,13 @@ public interface AccountService {
 
 	List<Account> findAccountByAge(int age);
 
-	List<Account> findAccountByGender(byte gender);
+	List<Account> findAccountByGender(int gender);
 
 	List<Account> findAccountByWeight(int weight);
 
 	List<Account> findAccountByHeight(int height);
 
-	Account create(User user);
+	Account create(Account account);
 
-	void saveChanges(String name, Account update);
+	Account saveChanges(Account update);
 }
