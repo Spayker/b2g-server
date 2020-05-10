@@ -1,14 +1,14 @@
 package com.spayker.account.repository;
 
 import com.spayker.account.domain.Account;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
 	List<Account> findByName(String name);
 
@@ -20,7 +20,7 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
 	List<Account> findByAge(int age);
 
-	List<Account> findByGender(byte gender);
+	List<Account> findByGender(int gender);
 
 	List<Account> findByWeight(int weight);
 

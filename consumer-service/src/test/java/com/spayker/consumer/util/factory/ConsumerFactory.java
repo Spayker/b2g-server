@@ -15,7 +15,14 @@ public class ConsumerFactory {
                 .build();
     }
 
-
-
+    public static Consumer createConsumer(Long id, String name, String email, Date createDate, Date modifiedDate) {
+        return Consumer.builder()
+                .id(id)
+                .name(name)
+                .email(email)
+                .createdDate(createDate)
+                .modifiedDate(modifiedDate)
+                .build();
+    }
 
 }

@@ -2,7 +2,6 @@ package com.spayker.account.service;
 
 import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
-import com.spayker.account.domain.User;
 import com.spayker.account.exception.AccountException;
 import com.spayker.account.repository.AccountRepository;
 import org.slf4j.Logger;
@@ -26,16 +25,16 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository repository;
 
 	@Override
-	public List<Account> findAccountByName(String accountName) {
-		if(accountName.length() == 0){
-			throw new IllegalArgumentException("provided accountName has 0 String length");
+	public List<Account> findAccountByName(String name) {
+		if(name.isEmpty() || name.isBlank()){
+			throw new IllegalArgumentException("provided name is empty or blank");
 		}
-		return repository.findByName(accountName);
+		return repository.findByName(name);
 	}
 
 	@Override
 	public Account findAccountById(String accountId) {
-		if(accountId.length() == 0){
+		if(accountId.isEmpty() || accountId.isBlank()){
 			throw new IllegalArgumentException("provided accountId has 0 String length");
 		}
 		Optional<Account> foundAccount = repository.findById(Long.valueOf(accountId));
@@ -44,8 +43,8 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account findAccountByEmail(String email) {
-		if(email.length() == 0){
-			throw new IllegalArgumentException("provided email has 0 String length");
+		if(email.isEmpty() || email.isBlank()){
+			throw new IllegalArgumentException("provided email is empty or blank");
 		}
 		return repository.findByEmail(email);
 	}
@@ -56,9 +55,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> findAccountByModifiedDate(Date modifiedDate) {
-		return repository.findByModifiedDate(modifiedDate);
-	}
+	public List<Account> findAccountByModifiedDate(Date modifiedDate) { return repository.findByModifiedDate(modifiedDate); }
 
 	@Override
 	public List<Account> findAccountByAge(int age) {
@@ -66,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> findAccountByGender(byte gender) {
+	public List<Account> findAccountByGender(int gender) {
 		return repository.findByGender(gender);
 	}
 
@@ -81,32 +78,26 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account create(User user) {
-		List<Account> existing = repository.findByName(user.getUsername());
+	public Account create(Account account) {
+		Account existing = repository.findByEmail(account.getEmail());
 		if(existing == null){
-			authClient.createUser(user);
-			Account account = Account.builder()
-					.name(user.getUsername())
-					.createdDate(new Date())
-					.build();
-
-			repository.save(account);
-			log.info("new account has been created: " + account.getName());
+			repository.saveAndFlush(account);
+			log.info("new account has been created: " + account.getEmail());
 			return account;
 		} else {
-			throw new AccountException("account already exists: " + user.getUsername());
+			throw new AccountException("account already exists: " + account.getEmail());
 		}
 	}
 
 	@Override
-	public void saveChanges(String name, Account update) {
-		List<Account> accounts = repository.findByName(name);
-		if(accounts == null){
-			throw new AccountException("can't find account with name " + name);
+	public Account saveChanges(Account update) {
+		Account account = repository.findByEmail(update.getEmail());
+		if(account == null){
+			throw new AccountException("can't find account with email " + update.getEmail());
 		} else {
-			// accounts.setModifiedDate(new Date());
-			// repository.save(accounts);
-			log.debug("account {} changes has been saved", name);
+			update.setModifiedDate(new Date());
+			log.debug("account {} changes have been saved", update.getEmail());
+			return repository.saveAndFlush(update);
 		}
 	}
 }
