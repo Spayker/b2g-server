@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/services")
+@RequestMapping("/consumers")
 public class ConsumerController {
 
 	@Autowired
@@ -23,4 +23,5 @@ public class ConsumerController {
 	public void createUser(@Valid @RequestBody User user) {
 		userService.create(user);
 	}
+
 }
