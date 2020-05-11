@@ -13,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -64,36 +63,29 @@ public class UserServiceTest {
     }
 
     private static Stream<Arguments> provideUpdatedUserList() {
-        List<User> userList = List.of(
-                UserFactory.createUser("name1@gmail.com", "password", new Date()),
-                UserFactory.createUser("name2@gmail.com", "password", new Date())
+        return Stream.of(
+                Arguments.of(UserFactory.createUser("name1@gmail.com", "password", new Date())),
+                Arguments.of(UserFactory.createUser("name2@gmail.com", "password", new Date()))
         );
-        return Stream.of(Arguments.of(userList));
     }
 
     @ParameterizedTest
     @MethodSource("provideUpdatedUserList")
     @DisplayName("Updates user by received changes")
-    public void shouldSaveChangesWhenUpdatedUserGiven(List<User> userList) {
+    public void shouldSaveChangesWhenUpdatedUserGiven(User user) {
         // given
-        final String updatePrefix = "_updated";
-
         // when
-        when(repository.findByUsername(user.getUsername())).thenReturn(user);
+        when(repository.findById(user.getId())).thenReturn(Optional.of(user));
         when(repository.saveAndFlush(user)).thenReturn(user);
-        User createdUser = userService.create(user);
 
-        createdUser.setUsername(createdUser.getUsername() + updatePrefix);
-        User updatedUser = userService.saveChanges(createdUser);
+        User savedUser = userService.saveChanges(user);
 
         // then
-        assertNotNull(updatedUser);
-        assertEquals(updatedUser.getUsername(), createdUser.getUsername());
+        assertNotNull(savedUser);
+        assertEquals(savedUser.getUsername(), user.getUsername());
 
-        verify(repository, times(2)).saveAndFlush(user);
+        verify(repository, times(1)).saveAndFlush(user);
     }
-
-
 
 
 }
