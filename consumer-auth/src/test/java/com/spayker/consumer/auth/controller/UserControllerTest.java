@@ -1,9 +1,9 @@
-package com.spayker.account.auth.controller;
+package com.spayker.consumer.auth.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spayker.account.auth.domain.User;
-import com.spayker.account.auth.service.UserService;
-import com.spayker.account.auth.util.factory.UserFactory;
+import com.spayker.consumer.auth.domain.User;
+import com.spayker.consumer.auth.service.UserService;
+import com.spayker.consumer.auth.util.factory.ConsumerFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,7 +31,7 @@ public class UserControllerTest {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @InjectMocks
-    private UserController userController;
+    private ConsumerController consumerController;
 
     @Mock
     private UserService userService;
@@ -41,13 +41,13 @@ public class UserControllerTest {
     @BeforeEach
     public void setup() {
         initMocks(this);
-        this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(consumerController).build();
     }
 
     private static Stream<Arguments> provideCommonUsers() {
         return Stream.of(
-                Arguments.of(UserFactory.createUser("name1@gmail.com", "password", new Date())),
-                Arguments.of(UserFactory.createUser("name2@gmail.com", "password", new Date()))
+                Arguments.of(ConsumerFactory.createUser("name1@gmail.com", "password", new Date())),
+                Arguments.of(ConsumerFactory.createUser("name2@gmail.com", "password", new Date()))
         );
     }
 
@@ -58,7 +58,7 @@ public class UserControllerTest {
         String json = mapper.writeValueAsString(user);
 
         when(userService.create(any())).thenReturn(user);
-        mockMvc.perform(post("/users")
+        mockMvc.perform(post("/consumers")
                 .contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isOk());
     }
