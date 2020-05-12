@@ -21,8 +21,8 @@ jobs:
       with:
         java-version: 11
     - name: Clean Maven
-        run: mvn clean --file pom.xml
+        run: mvn -B clean --file pom.xml
     - name: Compile Maven
-        run: mvn compile --file pom.xml
+        run: mvn -B compile --file pom.xml
     - name: Test Maven
-        run: mvn test --file pom.xml
+        run: mvn -B test --file pom.xml
