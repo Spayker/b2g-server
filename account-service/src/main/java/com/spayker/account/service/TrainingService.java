@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface TrainingService {
 
+    Training findTrainingById(Long id);
+
     List<Training> findTrainingsByDeviceName(String name);
 
     List<Training> findTrainingsByDeviceFirmware(String firmware);

@@ -28,6 +28,12 @@ public class TrainingServiceImpl implements TrainingService {
     private TrainingRepository trainingRepository;
 
     @Override
+    public Training findTrainingById(Long id) {
+        Optional<Training> training = trainingRepository.findById(id);
+        return training.orElse(null);
+    }
+
+    @Override
     public List<Training> findTrainingsByDeviceName(String name) {
         return null;
     }
