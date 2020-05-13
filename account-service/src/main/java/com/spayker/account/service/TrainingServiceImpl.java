@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrainingServiceImpl implements TrainingService {
@@ -75,7 +76,12 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public Training saveChanges(Training update) {
-        return null;
+        if(trainingRepository.existsById(update.getId())){
+            log.debug("account {} changes have been saved", update.getId());
+            return trainingRepository.saveAndFlush(update);
+        } else {
+            throw new TrainingException("can't find training with id " + update.getId());
+        }
     }
 
 }
