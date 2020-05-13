@@ -27,12 +27,9 @@ public class AccountController {
 		return new ResponseEntity<>(accountService.findAccountByName(name), HttpStatus.OK);
 	}
 
-
 	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public ResponseEntity<Account> createNewAccount(@Valid @RequestBody Account account) {
 		return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
 	}
-
-
 
 }

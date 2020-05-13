@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/trainings")
 public class TrainingController {
 
     @Autowired
@@ -29,7 +30,5 @@ public class TrainingController {
     public ResponseEntity<Training> createTraining(@Valid @RequestBody Training training) {
         return new ResponseEntity<>(trainingService.create(training), HttpStatus.CREATED);
     }
-
-
 
 }
