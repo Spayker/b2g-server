@@ -1,6 +1,5 @@
 package com.spayker.account.service;
 
-import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
 import com.spayker.account.exception.AccountException;
 import com.spayker.account.repository.AccountRepository;
@@ -17,9 +16,6 @@ import java.util.Optional;
 public class AccountServiceImpl implements AccountService {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
-
-	@Autowired
-	private AuthServiceClient authClient;
 
 	@Autowired
 	private AccountRepository repository;

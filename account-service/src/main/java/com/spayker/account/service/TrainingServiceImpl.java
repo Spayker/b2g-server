@@ -1,11 +1,8 @@
 package com.spayker.account.service;
 
-import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
 import com.spayker.account.domain.Training;
-import com.spayker.account.exception.AccountException;
 import com.spayker.account.exception.TrainingException;
-import com.spayker.account.repository.AccountRepository;
 import com.spayker.account.repository.TrainingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +19,6 @@ public class TrainingServiceImpl implements TrainingService {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
     private TrainingRepository trainingRepository;
 
     @Override
@@ -35,37 +29,37 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public List<Training> findTrainingsByDeviceName(String name) {
-        return null;
+        return trainingRepository.findByDeviceName(name);
     }
 
     @Override
     public List<Training> findTrainingsByDeviceFirmware(String firmware) {
-        return null;
+        return trainingRepository.findByDeviceFirmware(firmware);
     }
 
     @Override
     public Training findTrainingByCreatedDate(Date createDate) {
-        return null;
+        return trainingRepository.findByCreatedDate(createDate);
     }
 
     @Override
     public List<Training> findTrainingsByTime(int time) {
-        return null;
+        return trainingRepository.findByTime(time);
     }
 
     @Override
     public List<Training> findTrainingsByType(String type) {
-        return null;
+        return trainingRepository.findByType(type);
     }
 
     @Override
     public List<Training> findTrainingsByCalories(int calories) {
-        return null;
+        return trainingRepository.findByCalories(calories);
     }
 
     @Override
     public List<Training> findTrainingsByAccount(Account account) {
-        return null;
+        return trainingRepository.findByAccount(account);
     }
 
     @Override
