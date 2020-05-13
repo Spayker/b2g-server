@@ -23,8 +23,14 @@ zuul:
       stripPrefix: false
       sensitiveHeaders:
 
-    account-service:
+    account-service-1:
       path: /accounts/**
+      serviceId: account-service
+      stripPrefix: false
+      sensitiveHeaders:
+
+    account-service-2:
+      path: /accounts/trainings/**
       serviceId: account-service
       stripPrefix: false
       sensitiveHeaders:
