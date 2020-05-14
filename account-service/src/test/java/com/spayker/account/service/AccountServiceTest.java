@@ -44,8 +44,8 @@ public class AccountServiceTest {
 
 	private static Stream<Arguments> provideCommonAccounts() {
 		return Stream.of(
-				Arguments.of(AccountFactory.createAccount("name1", "name1@gmail.com", new Date(), null, 25, MALE, 75, 173)),
-				Arguments.of(AccountFactory.createAccount("name2", "name2@gmail.com", new Date(), null, 35, FEMALE, 48, 165))
+			Arguments.of(AccountFactory.createAccount("name1", "name1@gmail.com", new Date(), null, 25, MALE, 75, 173)),
+			Arguments.of(AccountFactory.createAccount("name2", "name2@gmail.com", new Date(), null, 35, FEMALE, 48, 165))
 		);
 	}
 

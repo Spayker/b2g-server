@@ -64,14 +64,10 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public Training create(Training training) {
-        if(training.getCreatedDate() == null){
-            training.setCreatedDate(new Date());
-            Training savedTraining = trainingRepository.saveAndFlush(training);
-            log.info("new training has been created: " + savedTraining.getId());
-            return savedTraining;
-        } else {
-            throw new TrainingException("training already exists for date: " + training.getId());
-        }
+        training.setCreatedDate(new Date());
+        Training savedTraining = trainingRepository.saveAndFlush(training);
+        log.info("new training has been created: " + savedTraining.getId());
+        return savedTraining;
     }
 
     @Override
