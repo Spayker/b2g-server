@@ -23,8 +23,14 @@ zuul:
       stripPrefix: false
       sensitiveHeaders:
 
-    consumer-service:
+    consumer-service-1:
       path: /consumers/**
+      serviceId: consumer-service
+      stripPrefix: false
+      sensitiveHeaders:
+
+    consumer-service-2:
+      path: /consumers/trainings/**
       serviceId: consumer-service
       stripPrefix: false
       sensitiveHeaders:
