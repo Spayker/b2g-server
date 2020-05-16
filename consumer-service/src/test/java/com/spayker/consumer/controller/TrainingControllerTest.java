@@ -1,11 +1,11 @@
-package com.spayker.account.controller;
+package com.spayker.consumer.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spayker.account.domain.Training;
-import com.spayker.account.service.TrainingService;
-import com.spayker.account.util.factory.AccountFactory;
-import com.spayker.account.util.factory.TrainingFactory;
+import com.spayker.consumer.domain.Training;
+import com.spayker.consumer.service.TrainingService;
+import com.spayker.consumer.util.factory.AccountFactory;
+import com.spayker.consumer.util.factory.TrainingFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,8 +21,8 @@ import java.util.Date;
 import java.util.stream.Stream;
 
 import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,8 +47,8 @@ public class TrainingControllerTest {
 
     private static Stream<Arguments> provideCommonTrainings() {
         return Stream.of(
-                Arguments.of(TrainingFactory.createTraining("miBand3", "v1.0", "jogging", 12000, 3500, new Date(), AccountFactory.createDummyAccount())),
-                Arguments.of(TrainingFactory.createTraining("miBand4", "v1.2", "cycling", 12000, 5500, new Date(), AccountFactory.createDummyAccount()))
+            Arguments.of(TrainingFactory.createTraining("miBand3", "v1.0", "jogging", 12000, 3500, new Date(), AccountFactory.createDummyAccount())),
+            Arguments.of(TrainingFactory.createTraining("miBand4", "v1.2", "cycling", 12000, 5500, new Date(), AccountFactory.createDummyAccount()))
         );
     }
 
