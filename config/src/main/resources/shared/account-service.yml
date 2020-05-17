@@ -1,5 +1,7 @@
 security:
   oauth2:
+    resource:
+      user-info-uri: http://account-auth:${ACCOUNT_AUTH_DEV_PORT}/mservicet/users/current
     client:
       clientId: account-service
       clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
@@ -10,7 +12,7 @@ security:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://training-mysqld:${DEFAULT_MYSQL_DB_PORT}/trainingDB?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://training-mysqld:${MYSQLDB_SERVICE_INTERNAL_DEV_PORT}/trainingDB?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     username: root
     password: qwerty
     jpa:
@@ -21,6 +23,7 @@ spring:
       properties:
         hibernate:
           dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
 
 server:
   servlet:
