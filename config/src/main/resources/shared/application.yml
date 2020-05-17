@@ -9,11 +9,6 @@ eureka:
     serviceUrl:
       defaultZone: http://registry:${REGISTRY_SERVICE_DEV_PORT}/eureka/
 
-security:
-  oauth2:
-    resource:
-      user-info-uri: http://auth-service:${ACCOUNT_AUTH_DEV_PORT}/mservicet/users/current
-
 spring:
   rabbitmq:
     host: rabbitmq

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://account-auth-mysqld:${DEFAULT_MYSQL_DB_PORT}/spring_social?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://account-auth-mysqld:${MYSQLDB_SERVICE_INTERNAL_DEV_PORT}/spring_social?useUnicode=yes&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     username: root
     password: qwerty
   jpa:
@@ -12,6 +12,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://account-auth:${ACCOUNT_AUTH_DEV_PORT}/mservicet/users/current
 
 server:
   servlet:
