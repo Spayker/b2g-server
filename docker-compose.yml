@@ -121,83 +121,83 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  consumer-gateway:
-    environment:
-      CONFIG_SERVICE_PASSWORD:    $CONFIG_SERVICE_PASSWORD
-      CONFIG_SERVICE_DEV_PORT:    $CONFIG_SERVICE_DEV_PORT
-      REGISTRY_SERVICE_DEV_PORT:  $REGISTRY_SERVICE_DEV_PORT
-      ACCOUNT_AUTH_DEV_PORT:      $ACCOUNT_AUTH_DEV_PORT
-      CONSUMER_GATEWAY_DEV_PORT:  $CONSUMER_GATEWAY_DEV_PORT
-    image: mservicet-consumer-gateway
-    restart: on-failure
-    depends_on:
-      - config
-    healthcheck:
-      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
-      interval: 30s
-      timeout: 10s
-      retries: 7
-      start_period: 1s
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  consumer-auth:
-    environment:
-      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
-      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
-      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
-      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
-      CONSUMER_AUTH_DEV_PORT:               $CONSUMER_AUTH_DEV_PORT
-      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
-      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
-    image: mservicet-consumer-auth
-    restart: on-failure
-    depends_on:
-      - config
-    healthcheck:
-      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
-      interval: 30s
-      timeout: 10s
-      retries: 7
-      start_period: 1s
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  consumer-auth-mysqld:
-    image: mservicet-consumer-auth-mysqld
-    environment:
-      MYSQL_DATABASE: spring_social
-      MYSQL_ROOT_PASSWORD: qwerty
-    restart: on-failure
-
-  consumer-service:
-    environment:
-      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
-      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
-      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
-      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
-      CONSUMER_SERVICE_DEV_PORT:            $CONSUMER_SERVICE_DEV_PORT
-      CONSUMER_AUTH_DEV_PORT:               $CONSUMER_AUTH_DEV_PORT
-      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
-      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
-    image: mservicet-consumer-service
-    restart: always
-    depends_on:
-      - config
-    healthcheck:
-      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
-      interval: 30s
-      timeout: 10s
-      retries: 7
-      start_period: 1s
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
+#  consumer-gateway:
+#    environment:
+#      CONFIG_SERVICE_PASSWORD:    $CONFIG_SERVICE_PASSWORD
+#      CONFIG_SERVICE_DEV_PORT:    $CONFIG_SERVICE_DEV_PORT
+#      REGISTRY_SERVICE_DEV_PORT:  $REGISTRY_SERVICE_DEV_PORT
+#      ACCOUNT_AUTH_DEV_PORT:      $ACCOUNT_AUTH_DEV_PORT
+#      CONSUMER_GATEWAY_DEV_PORT:  $CONSUMER_GATEWAY_DEV_PORT
+#    image: mservicet-consumer-gateway
+#    restart: on-failure
+#    depends_on:
+#      - config
+#    healthcheck:
+#      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 7
+#      start_period: 1s
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#  consumer-auth:
+#    environment:
+#      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
+#      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
+#      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
+#      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
+#      CONSUMER_AUTH_DEV_PORT:               $CONSUMER_AUTH_DEV_PORT
+#      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
+#      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
+#    image: mservicet-consumer-auth
+#    restart: on-failure
+#    depends_on:
+#      - config
+#    healthcheck:
+#      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 7
+#      start_period: 1s
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#  consumer-auth-mysqld:
+#    image: mservicet-consumer-auth-mysqld
+#    environment:
+#      MYSQL_DATABASE: spring_social
+#      MYSQL_ROOT_PASSWORD: qwerty
+#    restart: on-failure
+#
+#  consumer-service:
+#    environment:
+#      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
+#      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
+#      CONSUMER_SERVICE_PASSWORD:            $CONSUMER_SERVICE_PASSWORD
+#      MYSQLDB_PASSWORD:                     $MYSQLDB_PASSWORD
+#      CONSUMER_SERVICE_DEV_PORT:            $CONSUMER_SERVICE_DEV_PORT
+#      CONSUMER_AUTH_DEV_PORT:               $CONSUMER_AUTH_DEV_PORT
+#      MYSQLDB_SERVICE_INTERNAL_DEV_PORT:    $MYSQLDB_SERVICE_INTERNAL_DEV_PORT
+#      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
+#    image: mservicet-consumer-service
+#    restart: always
+#    depends_on:
+#      - config
+#    healthcheck:
+#      test: ["CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 7
+#      start_period: 1s
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
 
   training-mysqld:
     environment:
@@ -210,12 +210,12 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  rabbitmq:
-    image: rabbitmq:3-management
-    restart: on-failure
-    ports:
-      - $RABBITMQ_SERVICE_INTERNAL_PROD_PORT:$RABBITMQ_SERVICE_INTERNAL_PROD_PORT
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
+#  rabbitmq:
+#    image: rabbitmq:3-management
+#    restart: on-failure
+#    ports:
+#      - $RABBITMQ_SERVICE_INTERNAL_PROD_PORT:$RABBITMQ_SERVICE_INTERNAL_PROD_PORT
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"

@@ -19,7 +19,7 @@ zuul:
   routes:
     auth-service:
       path: /mservicet/**
-      url: http://account-auth:${ACCOUNT_AUTH_DEV_PORT}
+      url: http://account-auth:${AUTH_SERVICE_DEV_PORT}
       stripPrefix: false
       sensitiveHeaders:
 

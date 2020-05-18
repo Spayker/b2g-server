@@ -1,6 +1,8 @@
 package com.spayker.account.service;
 
+import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
 import com.spayker.account.exception.AccountException;
 import com.spayker.account.repository.AccountRepository;
 import org.slf4j.Logger;
@@ -19,6 +21,9 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountRepository repository;
+
+	@Autowired
+	private AuthServiceClient authClient;
 
 	@Override
 	public List<Account> findAccountByName(String name) {
@@ -74,9 +79,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account create(Account account) {
+	public Account create(Account account, User user) {
 		Account existing = repository.findByEmail(account.getEmail());
 		if(existing == null){
+			authClient.createUser(user);
 			repository.saveAndFlush(account);
 			log.info("new account has been created: " + account.getEmail());
 			return account;

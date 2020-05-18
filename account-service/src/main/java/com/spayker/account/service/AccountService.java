@@ -1,6 +1,7 @@
 package com.spayker.account.service;
 
 import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
 
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ public interface AccountService {
 
 	List<Account> findAccountByHeight(int height);
 
-	Account create(Account account);
+	Account create(Account account, User user);
 
 	Account saveChanges(Account update);
 }
