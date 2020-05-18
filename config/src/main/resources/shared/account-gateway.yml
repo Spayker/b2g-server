@@ -23,17 +23,17 @@ zuul:
       stripPrefix: false
       sensitiveHeaders:
 
-    account-service-1:
+    account-service:
       path: /accounts/**
       serviceId: account-service
       stripPrefix: false
       sensitiveHeaders:
 
-    account-service-2:
-      path: /accounts/trainings/**
-      serviceId: account-service
-      stripPrefix: false
-      sensitiveHeaders:
+#    account-service-2:
+#      path: /accounts/trainings/**
+#      serviceId: account-service
+#      stripPrefix: false
+#      sensitiveHeaders:
 
 server:
   port: ${ACCOUNT_GATEWAY_DEV_PORT}

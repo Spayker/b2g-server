@@ -210,12 +210,12 @@ services:
         max-size: "10m"
         max-file: "10"
 
-#  rabbitmq:
-#    image: rabbitmq:3-management
-#    restart: on-failure
-#    ports:
-#      - $RABBITMQ_SERVICE_INTERNAL_PROD_PORT:$RABBITMQ_SERVICE_INTERNAL_PROD_PORT
-#    logging:
-#      options:
-#        max-size: "10m"
-#        max-file: "10"
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: on-failure
+    ports:
+      - $RABBITMQ_SERVICE_INTERNAL_PROD_PORT:$RABBITMQ_SERVICE_INTERNAL_PROD_PORT
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
