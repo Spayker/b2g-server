@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +27,8 @@ import java.util.Date;
 public class Training {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue( strategy = GenerationType.AUTO, generator = "native" )
+    @GenericGenerator( name = "native", strategy = "native" )
     private long id;
 
     private String deviceName;
