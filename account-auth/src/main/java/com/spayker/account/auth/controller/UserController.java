@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired
