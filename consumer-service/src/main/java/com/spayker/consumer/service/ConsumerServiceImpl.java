@@ -1,6 +1,8 @@
 package com.spayker.consumer.service;
 
+import com.spayker.consumer.client.AuthServiceClient;
 import com.spayker.consumer.domain.Consumer;
+import com.spayker.consumer.domain.User;
 import com.spayker.consumer.exception.ConsumerException;
 import com.spayker.consumer.repository.ConsumerRepository;
 import org.slf4j.Logger;
@@ -18,6 +20,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 
 	@Autowired
 	private ConsumerRepository repository;
+
+	@Autowired
+	private AuthServiceClient authClient;
 
 	@Override
 	public Consumer findByConsumerId(Long consumerId) {
@@ -51,9 +56,10 @@ public class ConsumerServiceImpl implements ConsumerService {
 	}
 
 	@Override
-	public Consumer create(Consumer consumer) {
+	public Consumer create(Consumer consumer, User user) {
 		Consumer existing = repository.findByEmail(consumer.getEmail());
 		if(existing == null){
+			authClient.createUser(user);
 			repository.saveAndFlush(consumer);
 			log.info("new consumer has been created: " + consumer.getEmail());
 			return consumer;

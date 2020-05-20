@@ -20,5 +20,5 @@ security:
 
 server:
   servlet:
-    context-path: /users
+    context-path: /mservicet
   port: ${CONSUMER_AUTH_DEV_PORT}

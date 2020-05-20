@@ -17,13 +17,13 @@ zuul:
     socket-timeout-millis: 320000
 
   routes:
-    auth-service:
+    consumer-auth:
       path: /mservicet/**
       url: http://consumer-auth:${CONSUMER_AUTH_DEV_PORT}
       stripPrefix: false
       sensitiveHeaders:
 
-    consumer-service-1:
+    consumer-service:
       path: /consumers/**
       serviceId: consumer-service
       stripPrefix: false

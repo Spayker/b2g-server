@@ -1,6 +1,9 @@
 package com.spayker.consumer.controller;
 
 import com.spayker.consumer.domain.Consumer;
+import com.spayker.consumer.domain.User;
+import com.spayker.consumer.dto.ConsumerDto;
+import com.spayker.consumer.dto.mapper.ConsumerMapper;
 import com.spayker.consumer.service.ConsumerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ public class ConsumerController {
 	@Autowired
 	private ConsumerService consumerService;
 
+	@Autowired
+	private ConsumerMapper consumerMapper;
+
 	@PreAuthorize("#oauth2.hasScope('server')")
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public ResponseEntity<List<Consumer>> getConsumerByName(@PathVariable String name) {
@@ -29,8 +35,10 @@ public class ConsumerController {
 
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
-	public ResponseEntity<Consumer> createNewConsumer(@Valid @RequestBody Consumer account) {
-		return new ResponseEntity<>(consumerService.create(account), HttpStatus.CREATED);
+	public ResponseEntity<Consumer> createNewConsumer(@Valid @RequestBody ConsumerDto consumerDto) {
+		Consumer consumer = consumerMapper.consumerDtoToConsumer(consumerDto);
+		User user = consumerMapper.consumerDtoToUser(consumerDto);
+		return new ResponseEntity<>(consumerService.create(consumer, user), HttpStatus.CREATED);
 	}
 	
 }
