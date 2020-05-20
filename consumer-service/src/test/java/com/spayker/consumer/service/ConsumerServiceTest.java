@@ -1,8 +1,11 @@
 package com.spayker.consumer.service;
 
+import com.spayker.consumer.client.AuthServiceClient;
 import com.spayker.consumer.domain.Consumer;
+import com.spayker.consumer.domain.User;
 import com.spayker.consumer.repository.ConsumerRepository;
 import com.spayker.consumer.util.factory.ConsumerFactory;
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +37,9 @@ public class ConsumerServiceTest {
 	@Mock
 	private ConsumerRepository repository;
 
+	@Mock
+	private AuthServiceClient authClient;
+
 	@BeforeEach
 	public void setup() { initMocks(this); }
 
@@ -51,8 +57,14 @@ public class ConsumerServiceTest {
 	@MethodSource("provideCommonConsumers")
 	@DisplayName("Saves consumer by given consumer data")
 	public void shouldCreateConsumer(Consumer consumer) {
+		// given
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
 		// when
-		Consumer savedConsumer = consumerService.create(consumer);
+		Consumer savedConsumer = consumerService.create(consumer, user);
 
 		// then
 		assertNotNull(savedConsumer);
@@ -69,10 +81,16 @@ public class ConsumerServiceTest {
 	@DisplayName("Updates consumer by received changes")
 	public void shouldSaveChangesWhenUpdatedConsumerGiven(Consumer consumer) {
 		// given
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
+		// given
 		final String updatePrefix = "_updated";
 
 		// when
-		Consumer createdConsumer = consumerService.create(consumer);
+		Consumer createdConsumer = consumerService.create(consumer, user);
 		when(repository.findByEmail(consumer.getEmail())).thenReturn(createdConsumer);
 		when(repository.saveAndFlush(consumer)).thenReturn(createdConsumer);
 
@@ -92,10 +110,16 @@ public class ConsumerServiceTest {
 	@DisplayName("Looks for consumer by name")
 	public void shouldFindConsumerByName(Consumer consumer) {
 		// given
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
+		// given
 		final int expectedFoundConsumers = 1;
 
 		// when
-		Consumer savedConsumer = consumerService.create(consumer);
+		Consumer savedConsumer = consumerService.create(consumer, user);
 		when(repository.findByName(consumer.getName())).thenReturn(List.of(savedConsumer));
 		List<Consumer> foundConsumers = consumerService.findConsumerByName(consumer.getName());
 
@@ -145,7 +169,13 @@ public class ConsumerServiceTest {
 	@DisplayName("Looks for consumer by email")
 	public void shouldFindConsumerByEmail(Consumer consumer) {
 		// given
-		Consumer savedConsumer = consumerService.create(consumer);
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
+		// given
+		Consumer savedConsumer = consumerService.create(consumer, user);
 
 		// when
 		when(repository.findByEmail(consumer.getEmail())).thenReturn(savedConsumer);
@@ -176,8 +206,14 @@ public class ConsumerServiceTest {
 	@DisplayName("Looks for consumer by created date")
 	public void shouldFindConsumerByCreatedDate(Consumer consumer) {
 		// given
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
+		// given
 		final int expectedFoundConsumers = 1;
-		Consumer savedConsumer = consumerService.create(consumer);
+		Consumer savedConsumer = consumerService.create(consumer, user);
 
 		// when
 		when(repository.findByCreatedDate(consumer.getCreatedDate())).thenReturn(List.of(savedConsumer));
@@ -198,8 +234,14 @@ public class ConsumerServiceTest {
 	@DisplayName("Looks for consumer by modified date")
 	public void shouldFindConsumerByModifiedDate(Consumer consumer) {
 		// given
+		User user = User.builder().
+				username(consumer.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
+		// given
 		final int expectedFoundConsumers = 1;
-		Consumer savedConsumer = consumerService.create(consumer);
+		Consumer savedConsumer = consumerService.create(consumer, user);
 
 		// when
 		when(repository.findByModifiedDate(consumer.getModifiedDate())).thenReturn(List.of(savedConsumer));

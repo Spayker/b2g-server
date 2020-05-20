@@ -46,34 +46,34 @@ services:
       - $ACCOUNT_SERVICE_DEV_PORT:$ACCOUNT_SERVICE_DEV_PORT
       - $ACCOUNT_SERVICE_DEV_DEBUG_PORT:$ACCOUNT_SERVICE_DEV_DEBUG_PORT
 
-#  consumer-gateway:
-#    environment:
-#      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_GATEWAY_DEV_DEBUG_PORT}
-#    build: consumer-gateway
-#    ports:
-#      - $CONSUMER_GATEWAY_DEV_PORT:$CONSUMER_GATEWAY_DEV_PORT
-#      - $CONSUMER_GATEWAY_DEV_DEBUG_PORT:$CONSUMER_GATEWAY_DEV_DEBUG_PORT
-#
-#  consumer-auth:
-#    environment:
-#      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_AUTH_DEV_DEBUG_PORT}
-#    build: consumer-auth
-#    ports:
-#      - $CONSUMER_AUTH_DEV_PORT:$CONSUMER_AUTH_DEV_PORT
-#      - $CONSUMER_AUTH_DEV_DEBUG_PORT:$CONSUMER_AUTH_DEV_DEBUG_PORT
-#
-#  consumer-auth-mysqld:
-#    build: mysqld
-#    ports:
-#      - $CONSUMER_AUTH_MYSQLDB_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
-#
-#  consumer-service:
-#    environment:
-#      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_SERVICE_DEV_DEBUG_PORT}
-#    build: consumer-service
-#    ports:
-#      - $CONSUMER_SERVICE_DEV_PORT:$CONSUMER_SERVICE_DEV_PORT
-#      - $CONSUMER_SERVICE_DEV_DEBUG_PORT:$CONSUMER_SERVICE_DEV_DEBUG_PORT
+  consumer-gateway:
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_GATEWAY_DEV_DEBUG_PORT}
+    build: consumer-gateway
+    ports:
+      - $CONSUMER_GATEWAY_DEV_PORT:$CONSUMER_GATEWAY_DEV_PORT
+      - $CONSUMER_GATEWAY_DEV_DEBUG_PORT:$CONSUMER_GATEWAY_DEV_DEBUG_PORT
+
+  consumer-auth:
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_AUTH_DEV_DEBUG_PORT}
+    build: consumer-auth
+    ports:
+      - $CONSUMER_AUTH_DEV_PORT:$CONSUMER_AUTH_DEV_PORT
+      - $CONSUMER_AUTH_DEV_DEBUG_PORT:$CONSUMER_AUTH_DEV_DEBUG_PORT
+
+  consumer-auth-mysqld:
+    build: mysqld
+    ports:
+      - $CONSUMER_AUTH_MYSQLDB_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
+
+  consumer-service:
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${CONSUMER_SERVICE_DEV_DEBUG_PORT}
+    build: consumer-service
+    ports:
+      - $CONSUMER_SERVICE_DEV_PORT:$CONSUMER_SERVICE_DEV_PORT
+      - $CONSUMER_SERVICE_DEV_DEBUG_PORT:$CONSUMER_SERVICE_DEV_DEBUG_PORT
 
   training-mysqld:
     build: mysqld

@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     private static final String LOCALE_MESSAGE = "The locale is: ";
 
     /**
-     * DeviceException exception handler.
+     * ConsumerException exception handler.
      *
      * @param e             exception.
      * @param handlerMethod information about method.

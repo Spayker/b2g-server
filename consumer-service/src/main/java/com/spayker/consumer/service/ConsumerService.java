@@ -1,6 +1,7 @@
 package com.spayker.consumer.service;
 
 import com.spayker.consumer.domain.Consumer;
+import com.spayker.consumer.domain.User;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public interface ConsumerService {
 
 	List<Consumer> findConsumerByModifiedDate(Date modifiedDate);
 
-	Consumer create(Consumer consumer);
+	Consumer create(Consumer consumer, User user);
 
 	Consumer saveChanges(Consumer update);
 }
