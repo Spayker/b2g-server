@@ -1,6 +1,9 @@
 package com.spayker.account.controller;
 
 import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
+import com.spayker.account.dto.AccountDto;
+import com.spayker.account.dto.mapper.AccountMapper;
 import com.spayker.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
+	@Autowired
+	private AccountMapper accountMapper;
+
 	@PreAuthorize("#oauth2.hasScope('server')")
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public ResponseEntity<List<Account>> getAccountByName(@PathVariable String name) {
@@ -28,8 +34,10 @@ public class AccountController {
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
-	public ResponseEntity<Account> createNewAccount(@Valid @RequestBody Account account) {
-		return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
+	public ResponseEntity<Account> createNewAccount(@Valid @RequestBody AccountDto accountDto) {
+		Account account = accountMapper.accountDtoToAccount(accountDto);
+		User user = accountMapper.accountDtoToUser(accountDto);
+		return new ResponseEntity<>(accountService.create(account, user), HttpStatus.CREATED);
 	}
 
 }

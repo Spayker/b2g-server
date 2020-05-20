@@ -82,7 +82,7 @@ public class AccountControllerTest {
 	public void shouldRegisterNewAccount(Account account) throws Exception {
 		String json = mapper.writeValueAsString(account);
 
-		when(accountService.create(any())).thenReturn(account);
+		when(accountService.create(any(), any())).thenReturn(account);
 		mockMvc.perform(post("/")
 				.principal(new UserPrincipal("test"))
 				.contentType(MediaType.APPLICATION_JSON).content(json))

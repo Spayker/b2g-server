@@ -1,8 +1,12 @@
 package com.spayker.account.service;
 
+import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
+import com.spayker.account.dto.mapper.AccountMapper;
 import com.spayker.account.repository.AccountRepository;
 import com.spayker.account.util.factory.AccountFactory;
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,6 +40,12 @@ public class AccountServiceTest {
 	@Mock
 	private AccountRepository repository;
 
+	@Mock
+	private AccountMapper accountMapper;
+
+	@Mock
+	private AuthServiceClient authClient;
+
 	@BeforeEach
 	public void setup() { initMocks(this); }
 
@@ -53,8 +63,14 @@ public class AccountServiceTest {
 	@MethodSource("provideCommonAccounts")
 	@DisplayName("Saves account by given account data")
 	public void shouldCreateAccount(Account account) {
+		// given
+		User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
 		// when
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// then
 		assertNotNull(savedAccount);
@@ -71,13 +87,18 @@ public class AccountServiceTest {
 	@DisplayName("Updates account by received changes")
 	public void shouldSaveChangesWhenUpdatedAccountGiven(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+
 		final String updatePrefix = "_updated";
 		final int updateAge = 55;
 		final int updatedWeight = 70;
 		final int updatedHeight = 175;
 
 		// when
-		Account createdAccount = accountService.create(account);
+		Account createdAccount = accountService.create(account, user);
 		when(repository.findByEmail(account.getEmail())).thenReturn(createdAccount);
 		when(repository.saveAndFlush(account)).thenReturn(createdAccount);
 
@@ -104,10 +125,14 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by name")
 	public void shouldFindAccountByName(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
 
 		// when
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 		when(repository.findByName(account.getName())).thenReturn(List.of(savedAccount));
 		List<Account> foundAccounts = accountService.findAccountByName(account.getName());
 
@@ -160,7 +185,11 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by email")
 	public void shouldFindAccountByEmail(Account account) {
 		// given
-		Account savedAccount = accountService.create(account);
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByEmail(account.getEmail())).thenReturn(savedAccount);
@@ -194,8 +223,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by created date")
 	public void shouldFindAccountByCreatedDate(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByCreatedDate(account.getCreatedDate())).thenReturn(List.of(savedAccount));
@@ -219,8 +252,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by modified date")
 	public void shouldFindAccountByModifiedDate(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByModifiedDate(account.getModifiedDate())).thenReturn(List.of(savedAccount));
@@ -244,8 +281,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by age")
 	public void shouldFindAccountByAge(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByAge(account.getAge())).thenReturn(List.of(savedAccount));
@@ -269,8 +310,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by gender")
 	public void shouldFindAccountByGender(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByGender(account.getGender().getValue())).thenReturn(List.of(savedAccount));
@@ -294,8 +339,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by weight")
 	public void shouldFindAccountByWeight(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByWeight(account.getWeight())).thenReturn(List.of(savedAccount));
@@ -319,8 +368,12 @@ public class AccountServiceTest {
 	@DisplayName("Looks for account by height")
 	public void shouldFindAccountByHeight(Account account) {
 		// given
+		final User user = User.builder().
+				username(account.getName())
+				.password(RandomStringUtils.randomAlphabetic(10))
+				.build();
 		final int expectedFoundAccounts = 1;
-		Account savedAccount = accountService.create(account);
+		Account savedAccount = accountService.create(account, user);
 
 		// when
 		when(repository.findByHeight(account.getHeight())).thenReturn(List.of(savedAccount));

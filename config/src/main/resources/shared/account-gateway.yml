@@ -17,13 +17,13 @@ zuul:
     socket-timeout-millis: 320000
 
   routes:
-    auth-service:
+    account-auth:
       path: /mservicet/**
       url: http://account-auth:${ACCOUNT_AUTH_DEV_PORT}
       stripPrefix: false
       sensitiveHeaders:
 
-    account-service-1:
+    account-service:
       path: /accounts/**
       serviceId: account-service
       stripPrefix: false
