@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "B2G create new account",
+			"name": "B2G account: create new account",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "B2G get user token",
+			"name": "B2G account: get account token",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -88,7 +88,37 @@
 			"response": []
 		},
 		{
-			"name": "B2G create new consumer",
+			"name": "B2G account: post new training",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\t\t\t\tnull,\n\t\"deviceName\": \t\t\"miBand3\",\n\t\"deviceFirmware\":\t\"v1.0.0\",\n\t\"createdDate\":\t\tnull,\n\t\"time\":\t\t\t\t60000,\n\t\"type\":\t\t\t\t\"jogging\",\n\t\"calories\":\t\t\t5000,\n\t\"account\": {\n\t\t\"id\": 1,\n\t    \"name\": \t\t\"spayker\",\n\t    \"email\":\t\t\"spykerstar@gmail.com\",\n\t    \"createdDate\":\tnull,\n\t    \"modifiedDate\": null,\n\t    \"age\":\t\t\t35,\n\t    \"gender\":\t\tnull,\n\t    \"weight\":\t\t75,\n\t    \"height\":\t\t175\n\t} \n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/accounts/trainings/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"accounts",
+						"trainings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2G consumer: create new consumer",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -117,7 +147,7 @@
 			"response": []
 		},
 		{
-			"name": "B2G get consumer token",
+			"name": "B2G consumer: get consumer token",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -163,6 +193,51 @@
 						"mservicet",
 						"oauth",
 						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2G consumer: get training by account",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 38a0847e-ddfe-41a6-931a-4d8148a491ce",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 1,\n    \"name\": \"spayker\",\n    \"email\": \"spykerstar@gmail.com\",\n    \"createdDate\": null,\n    \"modifiedDate\": null,\n    \"age\": 35,\n    \"gender\": null,\n    \"weight\": 75,\n    \"height\": 175\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/consumers/trainings/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"consumers",
+						"trainings",
+						""
 					]
 				}
 			},
