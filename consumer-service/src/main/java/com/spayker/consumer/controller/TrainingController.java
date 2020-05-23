@@ -1,5 +1,6 @@
 package com.spayker.consumer.controller;
 
+import com.spayker.consumer.domain.Account;
 import com.spayker.consumer.domain.Training;
 import com.spayker.consumer.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/trainings")
@@ -27,9 +29,9 @@ public class TrainingController {
         return new ResponseEntity<>(trainingService.findTrainingById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.POST)
-    public ResponseEntity<Training> createTraining(@Valid @RequestBody Training training) {
-        return new ResponseEntity<>(trainingService.create(training), HttpStatus.CREATED);
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public ResponseEntity<List<Training>> getAllTrainingsByAccountId(@Valid @RequestBody Account account) {
+        return new ResponseEntity<>(trainingService.findTrainingsByAccount(account), HttpStatus.OK);
     }
 
 }
