@@ -83,9 +83,9 @@ public class AccountServiceImpl implements AccountService {
 		Account existing = repository.findByEmail(account.getEmail());
 		if(existing == null){
 			authClient.createUser(user);
-			repository.saveAndFlush(account);
-			log.info("new account has been created: " + account.getEmail());
-			return account;
+			Account savedAccount = repository.saveAndFlush(account);
+			log.info("new account has been created: " + savedAccount.getEmail());
+			return savedAccount;
 		} else {
 			throw new AccountException("account already exists: " + account.getEmail());
 		}

@@ -60,9 +60,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 		Consumer existing = repository.findByEmail(consumer.getEmail());
 		if(existing == null){
 			authClient.createUser(user);
-			repository.saveAndFlush(consumer);
-			log.info("new consumer has been created: " + consumer.getEmail());
-			return consumer;
+			Consumer savedConsumer = repository.saveAndFlush(consumer);
+			log.info("new consumer has been created: " + savedConsumer.getEmail());
+			return savedConsumer;
 		} else {
 			throw new ConsumerException("consumer already exists: " + consumer.getEmail());
 		}
