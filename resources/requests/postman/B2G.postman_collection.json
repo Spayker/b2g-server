@@ -242,6 +242,164 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "B2G GE account: create new account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\t\t\t-1,\n\t\"name\": \t\t\"spayker\",\n\t\"email\":\t\t\"spykerstar@gmail.com\",\n\t\"createdDate\":\tnull,\n\t\"modifiedDate\":\tnull,\n\t\"age\":\t\t\t35,\n\t\"gender\":\t\tnull,\n\t\"weight\":\t\t75,\n\t\"height\":\t\t175,\n\t\"password\": \t\"qwerty\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://148.251.138.115:6000/accounts/",
+					"protocol": "http",
+					"host": [
+						"148",
+						"251",
+						"138",
+						"115"
+					],
+					"port": "6000",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2G GE account: get account token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YnJvd3Nlcjo=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "scope",
+							"value": "ui",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "spaykerstar@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://148.251.138.115:5000/mservicet/oauth/token",
+					"protocol": "http",
+					"host": [
+						"148",
+						"251",
+						"138",
+						"115"
+					],
+					"port": "5000",
+					"path": [
+						"mservicet",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2G GE account: post new training",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 068e8b03-1c98-4542-838d-509153941552",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\t\t\t\tnull,\n\t\"deviceName\": \t\t\"miBand3\",\n\t\"deviceFirmware\":\t\"v1.0.0\",\n\t\"createdDate\":\t\tnull,\n\t\"time\":\t\t\t\t60000,\n\t\"type\":\t\t\t\t\"jogging\",\n\t\"calories\":\t\t\t5000,\n\t\"account\": {\n\t\t\"id\": 1,\n\t    \"name\": \t\t\"spayker\",\n\t    \"email\":\t\t\"spykerstar@gmail.com\",\n\t    \"createdDate\":\tnull,\n\t    \"modifiedDate\": null,\n\t    \"age\":\t\t\t35,\n\t    \"gender\":\t\tnull,\n\t    \"weight\":\t\t75,\n\t    \"height\":\t\t175\n\t} \n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://148.251.138.115:6000/accounts/trainings/",
+					"protocol": "http",
+					"host": [
+						"148",
+						"251",
+						"138",
+						"115"
+					],
+					"port": "6000",
+					"path": [
+						"accounts",
+						"trainings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2G GE consumer: create new consumer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\t\t\t-1,\n\t\"name\": \t\t\"spayker\",\n\t\"email\":\t\t\"spykerstar@gmail.com\",\n\t\"createdDate\":\tnull,\n\t\"modifiedDate\":\tnull,\n\t\"password\": \t\"qwerty\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://148.251.138.115:7000/consumers/",
+					"protocol": "http",
+					"host": [
+						"148",
+						"251",
+						"138",
+						"115"
+					],
+					"port": "7000",
+					"path": [
+						"consumers",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
