@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ *  Service layer implementation to work with User entities.
+ **/
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,6 +25,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository repository;
 
+	/**
+	 *  Creates a new user in db.
+	 *  @param user - object to be persisted
+	 **/
 	@Override
 	public User create(User user) {
 
@@ -36,6 +43,10 @@ public class UserServiceImpl implements UserService {
 		return savedUser;
 	}
 
+	/**
+	 *  Used to update already created user entity with new portion of data
+	 *  @param update - object to be updated
+	 **/
 	@Override
 	public User saveChanges(User update) {
 		Optional<User> username = repository.findById(update.getId());
