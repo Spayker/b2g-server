@@ -14,6 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ *  Account model entity that contains major information about account. Used almost everywhere that relates to Account:
+ *  - repo layer
+ *  - service layer
+ *  - controller layer
+ *  - dto forming
+ **/
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

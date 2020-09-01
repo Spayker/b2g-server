@@ -1,5 +1,8 @@
 package com.spayker.account.exception;
 
+/**
+ *  A custom exception class that works with account service layer of account micro-service.
+ **/
 public class AccountException extends RuntimeException {
 
     public AccountException() {
