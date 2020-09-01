@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ *  A controller layer with all needed (for now) methods.
+ *  Last ones are called when request handling starts happening.
+ *  Requests come on correspond url that linked by RequestMapping annotation with an appropriate declared method below.
+ **/
 @RestController
 @RequestMapping("/trainings")
 public class TrainingController {
@@ -23,12 +28,22 @@ public class TrainingController {
     @Autowired
     private TrainingService trainingService;
 
+    /**
+     *  Returns an Consumer instance found by id.
+     *  @param id Long value to make search by id possible
+     *  @return found Consumer entity
+     **/
     @PreAuthorize("#oauth2.hasScope('server')")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Training> getTrainingById(@PathVariable Long id) {
         return new ResponseEntity<>(trainingService.findTrainingById(id), HttpStatus.OK);
     }
 
+    /**
+     *  Returns all trainings by account id
+     *  @param account - Account data container to be used in search
+     *  @return ResponseEntity with list of found trainings
+     **/
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public ResponseEntity<List<Training>> getAllTrainingsByAccountId(@Valid @RequestBody Account account) {
         return new ResponseEntity<>(trainingService.findTrainingsByAccount(account), HttpStatus.OK);

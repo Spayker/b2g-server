@@ -17,6 +17,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * GlobalExceptionHandler serves to intercept and wrap all possible exceptions in one format
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -29,7 +32,7 @@ public class GlobalExceptionHandler {
      * @param e             exception.
      * @param handlerMethod information about method.
      * @param locale        localization.
-     * @return ResponseEntity with CareWaveServerException payload.
+     * @return ResponseEntity with AccountServerException payload.
      */
     @ExceptionHandler(AccountException.class)
     public ResponseEntity<AccountException> onRegularException(AccountException e, HandlerMethod handlerMethod, Locale locale) {
@@ -50,7 +53,6 @@ public class GlobalExceptionHandler {
      * @param locale        locale.
      * @return ResponseEntity with Object payload.
      */
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> onException(Exception e, HandlerMethod handlerMethod, Locale locale) {
         String message = handleException(handlerMethod, locale);
@@ -62,6 +64,13 @@ public class GlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * Returns string value with formatted exception message including locale
+     *
+     * @param handlerMethod handler method.
+     * @param locale        locale.
+     * @return String value with formatted exception message
+     */
     private String handleException(HandlerMethod handlerMethod, Locale locale){
         Class<?> controllerClass = handlerMethod.getMethod().getDeclaringClass();
         return String.format("%s%s . %s%s", DEFAULT_EXCEPTION_MESSAGE, controllerClass.toString(),
@@ -75,7 +84,6 @@ public class GlobalExceptionHandler {
      * @param response        servlet response.
      * @return Map<String, Object> returns well-formatted JSON-wrapped exception.
      */
-
     @ExceptionHandler(FeignException.class)
     public Map<String, Object> handleFeignStatusException(FeignException e, HttpServletResponse response) {
         response.setStatus(e.status());

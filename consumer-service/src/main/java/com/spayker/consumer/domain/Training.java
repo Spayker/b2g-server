@@ -17,6 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ *  Account model entity that contains major information about training. Used almost everywhere that relates to Training:
+ *  - repo layer
+ *  - service layer
+ *  - controller layer
+ *  - dto forming
+ **/
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

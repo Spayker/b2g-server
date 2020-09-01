@@ -17,6 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ *  Training model entity that contains major information about happened training. Used almost everywhere that relates
+ *  to Training:
+ *  - training repo layer
+ *  - training service layer
+ *  - training controller layer
+ **/
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

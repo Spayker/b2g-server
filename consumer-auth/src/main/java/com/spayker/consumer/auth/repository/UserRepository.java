@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
+/**
+ *  DAO layer for user model. Serves to exchange data between micro-service and related to it, db
+ **/
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 

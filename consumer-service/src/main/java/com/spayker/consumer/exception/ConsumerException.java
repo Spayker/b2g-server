@@ -1,5 +1,8 @@
 package com.spayker.consumer.exception;
 
+/**
+ *  A custom exception class that works with consumer service layer of consumer micro-service.
+ **/
 public class ConsumerException extends RuntimeException {
 
     public ConsumerException() {

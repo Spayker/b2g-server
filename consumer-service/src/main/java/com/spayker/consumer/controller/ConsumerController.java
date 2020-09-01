@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ *  A controller layer with all needed (for now) methods.
+ *  Last ones are called when request handling starts happening.
+ *  Requests come on correspond url that linked by RequestMapping annotation with an appropriate declared method below.
+ **/
 @RestController
 public class ConsumerController {
 
@@ -27,13 +32,22 @@ public class ConsumerController {
 	@Autowired
 	private ConsumerMapper consumerMapper;
 
+	/**
+	 *  Returns an Consumer instance found by name.
+	 *  @param name Strign value to make search by name possible
+	 *  @return found Consumer entity
+	 **/
 	@PreAuthorize("#oauth2.hasScope('server')")
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public ResponseEntity<List<Consumer>> getConsumerByName(@PathVariable String name) {
 		return new ResponseEntity<>(consumerService.findConsumerByName(name), HttpStatus.OK);
 	}
 
-
+	/**
+	 *  Creates consumer by provided User instance.
+	 *  @param consumerDto - data container related to new consumer entity to be created
+	 *  @return ResponseEntity with created Consumer (toDo: make return just id of created consumer)
+	 **/
 	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public ResponseEntity<Consumer> createNewConsumer(@Valid @RequestBody ConsumerDto consumerDto) {
 		Consumer consumer = consumerMapper.consumerDtoToConsumer(consumerDto);

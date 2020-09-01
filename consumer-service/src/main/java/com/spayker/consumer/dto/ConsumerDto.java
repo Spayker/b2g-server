@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * Data container object for Consumer entity. Used to isolate real Consumer model entities from what comes in system
+ * from outer world
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
