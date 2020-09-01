@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *  DAO layer for consumer model. Serves to exchange data between micro-service and related to it, db
+ **/
 @Repository
 public interface ConsumerRepository extends JpaRepository<Consumer, Long> {
 

@@ -1,5 +1,8 @@
 package com.spayker.consumer.exception;
 
+/**
+ *  A custom exception class that works with training service layer of consumer micro-service.
+ **/
 public class TrainingException extends RuntimeException {
 
     public TrainingException() { super(); }

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *  DAO layer for training model. Serves to exchange data between micro-service and related to it, db
+ **/
 @Repository
 public interface TrainingRepository extends JpaRepository<Training, Long> {
 

@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *  Service layer implementation to work with Consumer entities.
+ **/
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
 
@@ -24,11 +27,21 @@ public class ConsumerServiceImpl implements ConsumerService {
 	@Autowired
 	private AuthServiceClient authClient;
 
+	/**
+	 *  Looks for stored consumer by its id.
+	 *  @param consumerId - string value for search
+	 *  @return found consumer
+	 **/
 	@Override
 	public Consumer findByConsumerId(Long consumerId) {
 		return repository.findById(consumerId).orElse(null);
 	}
 
+	/**
+	 *  Looks for stored consumer by its name.
+	 *  @param name - string value for search
+	 *  @return list of found consumerss
+	 **/
 	@Override
 	public List<Consumer> findConsumerByName(String name) {
 		if(name.isEmpty() || name.isBlank()){
@@ -37,6 +50,11 @@ public class ConsumerServiceImpl implements ConsumerService {
 		return repository.findByName(name);
 	}
 
+	/**
+	 *  Looks for stored consumer by its email
+	 *  @param email - string value for search
+	 *  @return found Consumer
+	 **/
 	@Override
 	public Consumer findConsumerByEmail(String email) {
 		if(email.isEmpty() || email.isBlank()){
@@ -45,16 +63,31 @@ public class ConsumerServiceImpl implements ConsumerService {
 		return repository.findByEmail(email);
 	}
 
+	/**
+	 *  Looks for stored consumer by its created date
+	 *  @param createdDate - string value for search
+	 *  @return list of found consumers
+	 **/
 	@Override
 	public List<Consumer> findConsumerByCreatedDate(Date createdDate) {
 		return repository.findByCreatedDate(createdDate);
 	}
 
+	/**
+	 *  Looks for stored consumer by its modified date
+	 *  @param modifiedDate - string value for search
+	 *  @return list of found consumers
+	 **/
 	@Override
 	public List<Consumer> findConsumerByModifiedDate(Date modifiedDate) {
 		return repository.findByModifiedDate(modifiedDate);
 	}
 
+	/**
+	 *  Creates new Consumer and returns it by provided User instance.
+	 *  @param user - instance of User with email and password
+	 *  @return created Consumer
+	 **/
 	@Override
 	public Consumer create(Consumer consumer, User user) {
 		Consumer existing = repository.findByEmail(consumer.getEmail());
@@ -68,6 +101,10 @@ public class ConsumerServiceImpl implements ConsumerService {
 		}
 	}
 
+	/**
+	 *  Updates a stored consumer and returns its updated variant.
+	 *  @param update - an updated variation of Consumer that must be persisted
+	 **/
 	@Override
 	public Consumer saveChanges(Consumer update) {
 		Consumer consumer = repository.findByEmail(update.getEmail());
