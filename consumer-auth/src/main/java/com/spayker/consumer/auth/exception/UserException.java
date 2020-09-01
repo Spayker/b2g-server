@@ -1,5 +1,8 @@
 package com.spayker.consumer.auth.exception;
 
+/**
+ *  Business related custom exception to intercept situation when something is going wrong with service layer
+ **/
 public class UserException extends RuntimeException {
 
     public UserException() {
