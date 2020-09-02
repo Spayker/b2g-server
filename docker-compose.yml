@@ -200,6 +200,9 @@ services:
         max-file: "10"
 
   training-mysqld:
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./mysqld/init.sql:/data/application/init.sql
     environment:
       MYSQL_DATABASE: trainingDB
       MYSQL_ROOT_PASSWORD: qwerty
