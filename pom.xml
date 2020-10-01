@@ -47,6 +47,7 @@
         <module>consumer-auth</module>
         <module>consumer-gateway</module>
         <module>consumer-service</module>
+        <module>monitoring</module>
     </modules>
 
 </project>
