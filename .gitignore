@@ -40,3 +40,7 @@ config/target
 registry/target
 consumer-gateway/target
 consumer-gateway/*.iml
+monitoring/target
+monitoring/*.iml
+turbine-stream-service/target
+turbine-stream-service/*.iml
