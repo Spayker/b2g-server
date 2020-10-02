@@ -83,11 +83,18 @@ services:
       - $MONITORING_SERVICE_DEV_PORT:$MONITORING_SERVICE_DEV_PORT
       - $MONITORING_SERVICE_DEV_DEBUG_PORT:$MONITORING_SERVICE_DEV_DEBUG_PORT
 
-  training-mysqld:
-    build: mysqld
+  turbine-stream-service:
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${TURBINE_SERVICE_DEV_DEBUG_PORT}
+    build: turbine-stream-service
     ports:
-      - $MYSQLDB_TRAINING_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
+      - $TURBINE_SERVICE_DEV_PORT:$TURBINE_SERVICE_DEV_PORT
+      - $TURBINE_SERVICE_DEV_DEBUG_PORT:$TURBINE_SERVICE_DEV_DEBUG_PORT
 
+#  training-mysqld:
+#    build: mysqld
+#    ports:
+#      - $MYSQLDB_TRAINING_EXTERNAL_DEV_PORT:$MYSQLDB_SERVICE_INTERNAL_DEV_PORT
 
   rabbitmq:
     ports:

@@ -199,25 +199,48 @@ services:
 #        max-size: "10m"
 #        max-file: "10"
 
-  training-mysqld:
-    command: --init-file /data/application/init.sql
-    volumes:
-      - ./mysqld/init.sql:/data/application/init.sql
-    environment:
-      MYSQL_DATABASE: trainingDB
-      MYSQL_ROOT_PASSWORD: qwerty
-    image: mservicet-mysqld
-    restart: on-failure
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
+#  training-mysqld:
+#    command: --init-file /data/application/init.sql
+#    volumes:
+#      - ./mysqld/init.sql:/data/application/init.sql
+#    environment:
+#      MYSQL_DATABASE: trainingDB
+#      MYSQL_ROOT_PASSWORD: qwerty
+#    image: mservicet-mysqld
+#    restart: on-failure
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
 
   monitoring:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT: $CONFIG_SERVICE_DEV_PORT
+      MONITORING_SERVICE_DEV_PORT: $MONITORING_SERVICE_DEV_PORT
+      REGISTRY_SERVICE_DEV_PORT:  $REGISTRY_SERVICE_DEV_PORT
     image: mservicet-monitoring-service
+    restart: always
+    depends_on:
+      - config
+    healthcheck:
+      test: [ "CMD", "curl", $CONFIG_SERVER_HEALTH_CHECK_URL ]
+      interval: 30s
+      timeout: 10s
+      retries: 7
+      start_period: 1s
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  turbine-stream-service:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_DEV_PORT: $CONFIG_SERVICE_DEV_PORT
+      TURBINE_SERVICE_DEV_PORT: $TURBINE_SERVICE_DEV_PORT
+      REGISTRY_SERVICE_DEV_PORT:  $REGISTRY_SERVICE_DEV_PORT
+    image: mservicet-turbine-stream-service
     restart: always
     depends_on:
       - config
