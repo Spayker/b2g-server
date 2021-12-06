@@ -1,6 +1,6 @@
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Spayker/spike-boost-server/blob/master/LICENSE)
 
-# B2G Server side
+# H2G Server side
 
 ## Project status
 The project has proof of concept state now.
