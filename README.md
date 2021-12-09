@@ -2,14 +2,13 @@
 
 # H2G Server side
 
-## Project status
-The project has proof of concept state now.
-
-## Description
-Server side is going to be used for main processing of data comes from smartphones. All results will be kept 
-on local data based. It will have two modes which define scenarious as follows:
+Server side is going to be used for main processing of data comes from smartphones. All results will be kept
+on local data based. It will have two modes which define scenarios as follows:
 1) keep processed data in some DB. In this case some game will have access to it.
 2) keep processed data locally and send them to target game application by rest according to demand
+
+## Project status
+The project has proof of concept state now.
 
 ### Stack of technologies
 Following technologies will be used:
@@ -23,10 +22,10 @@ Following technologies will be used:
 8) Docker Compose (3.7)
 
 ## Server Review
-Current server's concept looks like below
+Current server's concept looks like below: </br>
 ![alt text](resources/diagrams/B2G_server_architecture.jpg)
 
-Data structure for Stage 1 looks like:
+Data structure for Stage 1 looks like: </br>
 ![alt text](resources/diagrams/B2G_db_mk2.png)
 
 ## How to get started
@@ -36,8 +35,7 @@ Data structure for Stage 1 looks like:
 4) Check what docker plugin shows and check there running containers
 
 ## Links
-Trello Board: https://trello.com/b/1uTb2b5M/b2g-server
-Dzone Article: https://dzone.com/articles/miband-3-and-react-native-part-three-server-side
+
 
 ## License
 MIT
