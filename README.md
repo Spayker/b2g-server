@@ -23,10 +23,10 @@ Following technologies will be used:
 
 ## Server Review
 Current server's concept looks like below: </br>
-![alt text](resources/diagrams/B2G_server_architecture.jpg)
+![alt text](resources/diagrams/H2G_server_redesign.jpg)
 
 Data structure for Stage 1 looks like: </br>
-![alt text](resources/diagrams/B2G_db_mk2.png)
+![alt text](resources/diagrams/H2G_db_mk2.png)
 
 ## How to get started
 1) Compile sources staying in project root folder by typing in terminal: mvn clean install
